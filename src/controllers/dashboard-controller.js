@@ -15,7 +15,7 @@ export const dashboardController = {
   addMegalithicMonument: {
     handler: async function (request, h) {
       const newMegalithicMonument = {
-        name: request.payload.title,
+        name: request.payload.name,
       };
       await db.megalithicStore.addMegalithicMonument(newMegalithicMonument);
       return h.redirect("/dashboard");
