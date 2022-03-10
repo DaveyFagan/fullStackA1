@@ -14,5 +14,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",
     "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1"
   }
 }
