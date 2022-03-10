@@ -3,7 +3,7 @@ import Vision from "@hapi/vision";
 import Handlebars from "handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
-import { webRoutes } from "./web-routes";
+import { webRoutes } from "./web-routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,15 +15,15 @@ async function init() {
   });
   await server.register(Vision);
   server.views({
-      engines: {
-          hbs: Handlebars,
-      },
-      relativeTo: __dirname,
-      path: "./views",
-      layoutPath: "./views/layouts",
-      partialsPath: "./views/partials",
-      layout: true,
-      isCached: false,
+    engines: {
+      hbs: Handlebars,
+    },
+    relativeTo: __dirname,
+    path: "./views",
+    layoutPath: "./views/layouts",
+    partialsPath: "./views/partials",
+    layout: true,
+    isCached: false,
   });
   server.route(webRoutes);
   await server.start();
