@@ -35,13 +35,29 @@ export const megalithicApi = {
       try {
         const megalithicMonument = await db.megalithicStore.getMegalithicMonumentById(request.params.id);
         if (!megalithicMonument) {
-          return Boom.notFound("No User with this id");
+          return Boom.notFound("No Monument with this id");
         }
         return megalithicMonument;
       } catch (err) {
-        return Boom.serverUnavailable("No User with this id");
+        return Boom.serverUnavailable("No Monument with this id");
       }
     },
+  },
+
+// fix later: When random id is used, the last monument is deleted.****
+
+  deleteOne: {
+      auth: false,
+      handler: async function (request, h) {
+          try {
+              await db.megalithicStore.deleteMegalithicMonumentById(request.params.id);
+              const megalithicMonuments = await db.megalithicStore.getAllMegalithicMonuments();
+
+              return megalithicMonuments;
+          }catch (err) {
+              return Boom.serverUnavailable("No Monument with this id")
+          }
+      }
   },
 
   deleteAll: {
