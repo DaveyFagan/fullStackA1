@@ -55,4 +55,20 @@ export const userApi = {
       }
     },
   },
+
+  // fix later: random id deletes last value
+  
+  deleteOne: {
+    auth: false,
+    handler: async function (request, h) {
+        try {
+            await db.userStore.deleteUserById(request.params.id);
+            const users = await db.userStore.getAllUsers();
+
+            return users;
+        }catch (err) {
+            return Boom.serverUnavailable("No Monument with this id")
+        }
+    }
+},
 };
