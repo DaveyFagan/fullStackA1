@@ -43,17 +43,17 @@ export const megalithicApi = {
       }
     },
   },
-/*
+
   deleteAll: {
     auth: false,
     handler: async function (request, h) {
       try {
-        await db.userStore.deleteAll();
+        await db.megalithicStore.deleteAllMegalithicMonuments();
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
   },
-  */
+  
 };
