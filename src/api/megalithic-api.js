@@ -28,22 +28,22 @@ export const megalithicApi = {
       }
     },
   },
-/*
+
   findOne: {
     auth: false,
     handler: async function (request, h) {
       try {
-        const user = await db.userStore.getUserById(request.params.id);
-        if (!user) {
+        const megalithicMonument = await db.megalithicStore.getMegalithicMonumentById(request.params.id);
+        if (!megalithicMonument) {
           return Boom.notFound("No User with this id");
         }
-        return user;
+        return megalithicMonument;
       } catch (err) {
         return Boom.serverUnavailable("No User with this id");
       }
     },
   },
-
+/*
   deleteAll: {
     auth: false,
     handler: async function (request, h) {

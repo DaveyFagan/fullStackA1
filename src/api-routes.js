@@ -8,5 +8,6 @@ export const apiRoutes = [
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
 
   { method: "POST", path: "/api/megalithicmonuments", config: megalithicApi.create },
-  { method: "GET", path: "/api/megalithicmonuments", config: megalithicApi.find }
+  { method: "GET", path: "/api/megalithicmonuments", config: megalithicApi.find },
+  { method: "GET", path: "/api/megalithicmonuments/{id}", config: megalithicApi.findOne}
 ];
