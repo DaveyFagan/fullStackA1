@@ -7,5 +7,6 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/users", config: userApi.deleteAll },
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
 
-  { method: "POST", path: "/api/megalithicmonuments", config: megalithicApi.create }
+  { method: "POST", path: "/api/megalithicmonuments", config: megalithicApi.create },
+  { method: "GET", path: "/api/megalithicmonuments", config: megalithicApi.find }
 ];
