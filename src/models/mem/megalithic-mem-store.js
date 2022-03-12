@@ -3,6 +3,11 @@ import { v4 } from "uuid";
 let megalithicMonuments = [];
 
 export const megalithicMemStore = {
+
+  async getUserMegMonuments(userid) {
+    return megalithicMonuments.filter((megalithicMonument) => megalithicMonument.userid === userid);
+  },
+
   async getAllMegalithicMonuments() {
     return megalithicMonuments;
   },
