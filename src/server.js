@@ -4,6 +4,7 @@ import Handlebars from "handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
+import dotenv from "dotenv";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
