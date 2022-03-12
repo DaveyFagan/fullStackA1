@@ -23,20 +23,15 @@ export const accountsController = {
       return h.view("login-view", { title: "Login to Megalithic Ireland" });
     },
   },
-  login: {
-    handler: async function (request, h) {
-      const { email, password } = request.payload;
-      const user = await db.userStore.getUserByEmail(email);
-      if (!user || user.password !== password) {
-        return h.redirect("/");
-      }
-      return h.redirect("/dashboard");
-    },
-  },
-  logout: {
-    handler: function (request, h) {
+ 
+  handler: async function (request, h) {
+    const { email, password } = request.payload;
+    const user = await db.userStore.getUserByEmail(email);
+    if (!user || user.password !== password) {
       return h.redirect("/");
-    },
+    }
+    request.cookieAuth.set({ id: user._id });
+    return h.redirect("/dashboard");
   },
 
   async validate(request, session) {
