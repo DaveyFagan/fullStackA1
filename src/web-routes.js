@@ -11,6 +11,6 @@ export const webRoutes = [
   
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addmegalithicmonument", config: dashboardController.addMegalithicMonument },
-    { method: "DELETE", path: "/dashboard/deletemegalithicmonument/{id}", config: dashboardController.deleteMegalithicMonument }
+    { method: "GET", path: "/dashboard/deletemegalithicmonument/{id}", config: dashboardController.deleteMegalithicMonument }
 
   ];

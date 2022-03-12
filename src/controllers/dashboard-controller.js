@@ -25,4 +25,12 @@ export const dashboardController = {
       return h.redirect("/dashboard");
     },
   },
+
+  deleteMegalithicMonument: {
+    handler: async function (request, h) {
+      const getMegMonument = await db.megalithicStore.getMegalithicMonumentById(request.params.id);
+      await db.megalithicStore.deleteMegalithicMonumentById(getMegMonument._id);
+      return h.redirect("/dashboard");
+    },
+  },
 };
