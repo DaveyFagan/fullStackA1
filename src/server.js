@@ -10,6 +10,12 @@ import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
