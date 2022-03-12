@@ -28,8 +28,8 @@ async function init() {
   await server.register(Cookie);
   server.auth.strategy("session", "cookie", {
     cookie: {
-      name: "megalithic",
-      password: "secretpasswordnotrevealedtoanyone",
+      name: process.env.COOKIE_NAME,
+      password: process.env.COOKIE_PASSWORD,
       isSecure: false,
     },
     redirectTo: "/",
