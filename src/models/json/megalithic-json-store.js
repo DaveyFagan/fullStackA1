@@ -17,5 +17,10 @@ export const megalithicJsonStore = {
         await db.write();
         return megalithic;
     },
+
+    async getUserMegalithics(userid) {
+        await db.read();
+        return db.data.megalithics.filter((megalithic) => megalithic.userid === userid); 
+    },
 }
 
