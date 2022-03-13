@@ -6,12 +6,12 @@ const db = new Low(new JSONFile("./src/models/json/megalithics.json"));
 db.data = { megalithics: [] };
 
 export const megalithicJsonStore = {
-    async getAllMegalithics() {
+    async getAllMegalithicMonuments() {
         await db.read();
         return db.data.megalithics;
     },
 
-    async addMegalithic(megalithic) {
+    async addMegalithicMonument(megalithic) {
         await db.read();
         megalithic._id = v4();
         db.data.megalithics.push(megalithic);
@@ -19,19 +19,19 @@ export const megalithicJsonStore = {
         return megalithic;
     },
 
-    async getUserMegalithics(userid) {
+    async getUserMegMonuments(userid) {
         await db.read();
         return db.data.megalithics.filter((megalithic) => megalithic.userid === userid); 
     },
 
-    async deleteMegalithicById(id) {
+    async deleteMegalithicMonumentById(id) {
         await db.read();
         const index = db.data.megalithics.findIndex((megalithic) => megalithic._id === id);
         db.data.megalithics.splice(index, 1);
         await db.write();
     },
 
-    async deleteAllMegalithics() {
+    async deleteAllMegalithicMonuments() {
         db.data.megalithics = [];
         await db.write();
     },

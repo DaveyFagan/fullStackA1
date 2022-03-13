@@ -1,3 +1,14 @@
 {
-    "megalithics": []
+  "megalithics": [
+    {
+      "userid": "cc04f511-5db1-4449-9219-5578390e8401",
+      "name": "newgrange",
+      "_id": "abf086c1-1d27-4877-9988-d5ce2c3df90a"
+    },
+    {
+      "userid": "cc04f511-5db1-4449-9219-5578390e8401",
+      "name": "stone henge",
+      "_id": "d1384771-e229-4f7f-b4ea-354b994f63f0"
+    }
+  ]
 }
