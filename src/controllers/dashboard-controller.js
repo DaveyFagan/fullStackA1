@@ -20,6 +20,9 @@ export const dashboardController = {
       const newMegalithicMonument = {
         userid: loggedInUser._id,
         name: request.payload.name,
+        description: request.payload.description,
+        lat: request.payload.lat,
+        lng: request.payload.lng
       };
       await db.megalithicStore.addMegalithicMonument(newMegalithicMonument);
       return h.redirect("/dashboard");
