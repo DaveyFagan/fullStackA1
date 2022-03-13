@@ -22,5 +22,17 @@ export const megalithicJsonStore = {
         await db.read();
         return db.data.megalithics.filter((megalithic) => megalithic.userid === userid); 
     },
+
+    async deleteMegalithicById(id) {
+        await db.read();
+        const index = db.data.megalithics.findIndex((megalithic) => megalithic._id === id);
+        db.data.megalithics.splice(index, 1);
+        await db.write();
+    },
+
+    async deleteAllMegalithics() {
+        db.data.megalithics = [];
+        await db.write();
+    },
 }
 
