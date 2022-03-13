@@ -35,5 +35,11 @@ export const megalithicJsonStore = {
         db.data.megalithics = [];
         await db.write();
     },
+
+    async getMegalithicMonumentById(id) {
+        await db.read();
+        const list = db.data.megalithics.find((megalithic) =>  megalithic._id === id);
+        return list;
+    }
 }
 
