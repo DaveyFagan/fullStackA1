@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+// eslint-disable-next-line import/no-unresolved
 import { JSONFile, Low } from "lowdb";
 
 const db = new Low(new JSONFile("./src/models/json/megalithics.json"));
