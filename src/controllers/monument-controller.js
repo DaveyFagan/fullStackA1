@@ -1,31 +1,29 @@
 import { db } from "../models/db.js";
 
-export const dashboardController = {
+export const monumentController = {
   index: {
     handler: async function (request, h) {
-      const loggedInUser = request.auth.credentials;
-      const megalithicMonuments = await db.megalithicStore.getUserMegMonuments(loggedInUser._id);
+      const place = await db.placeStore.getPlaceById(request.params.id);
+     // const megalithicMonuments = await db.megalithicStore.getUserMegMonuments(loggedInUser._id);
       const viewData = {
-        title: "Megalithic Ireland Dashboard",
-        user: loggedInUser,
-        megalithicMonuments: megalithicMonuments,
+        title: "Place",
+        place: place
       };
-      return h.view("dashboard-view", viewData);
+      return h.view("monument-view", viewData);
     },
   },
 
   addMegalithicMonument: {
     handler: async function (request, h) {
-      const loggedInUser = request.auth.credentials;
+      const place = await db.placeStore.getPlaceById(request.params.id);
       const newMegalithicMonument = {
-        userid: loggedInUser._id,
         name: request.payload.name,
         description: request.payload.description,
         lat: request.payload.lat,
         lng: request.payload.lng
       };
-      await db.megalithicStore.addMegalithicMonument(newMegalithicMonument);
-      return h.redirect("/dashboard");
+      await db.megalithicStore.addMonument(place._id, newMegalithicMonument);
+      return h.redirect(`/place/${place._id}`);
     },
   },
 

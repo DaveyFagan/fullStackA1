@@ -1,30 +1,28 @@
-{{#each megalithicMonuments}}
-  <div class="box box-link-hover-shadow">
-    <h2 class="title">
-      {{name}}
-    </h2>
-    <h4 class="title is-size-5">
-      Description:
-    </h4>
-    <p>
-      {{description}}
-    </p>
-    <h3 class="title is-size-5">
-      Location:
-    </h3>
-    <p>
-      Lat: {{lat}}
-    </p>
-    <p>
-      lng: {{lng}}
-    </p>
-    <a href="/dashboard/deletemegalithicmonument/{{_id}}" class="button">
-    <span class="icon-text">
-      <span class="icon has-text-danger">
-        <i class="far fa-times-circle"></i>
-      </span>
-    <span>Delete</span>
-    </span>
-    </a>
-  </div>
-{{/each}}
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each place.megalithicMonuments}}
+      <tr>
+        <td>
+          {{name}}
+        </td>
+        <td>
+          {{description}}
+        </td>
+        <td>
+          {{lat}}
+        </td>
+        <td>
+          {{lng}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

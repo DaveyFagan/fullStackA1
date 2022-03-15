@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+import {megalithicMemStore} from "./megalithic-mem-store.js";
 
 let places = [];
 
@@ -19,7 +20,9 @@ export const placeMemStore = {
   },
 
   async getPlaceById(id) {
-    return places.find((place) => place._id === id);
+    const list = places.find((place) => place._id === id);
+    list.megalithicMonuments = await megalithicMemStore.getMonumentsByplaceId(list._id);
+    return list;
   },
 
   async deletePlaceById(id) {
