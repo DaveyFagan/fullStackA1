@@ -1,0 +1,15 @@
+{{#each places}}
+  <div class="box box-link-hover-shadow">
+    <h2 class="title">
+      {{name}}
+    </h2>
+    <a href="/dashboard/deleteplace/{{_id}}" class="button">
+    <span class="icon-text">
+      <span class="icon has-text-danger">
+        <i class="far fa-times-circle"></i>
+      </span>
+    <span>Delete</span>
+    </span>
+    </a>
+  </div>
+{{/each}}

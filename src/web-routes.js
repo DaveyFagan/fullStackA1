@@ -10,7 +10,7 @@ export const webRoutes = [
     { method: "POST", path: "/authenticate", config: accountsController.login },
   
     { method: "GET", path: "/dashboard", config: dashboardController.index },
-    { method: "POST", path: "/dashboard/addmegalithicmonument", config: dashboardController.addMegalithicMonument },
-    { method: "GET", path: "/dashboard/deletemegalithicmonument/{id}", config: dashboardController.deleteMegalithicMonument }
+    { method: "POST", path: "/dashboard/addplacename", config: dashboardController.addPlace },
+    { method: "GET", path: "/dashboard/deleteplace/{id}", config: dashboardController.deletePlace }
 
   ];

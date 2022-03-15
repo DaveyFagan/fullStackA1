@@ -4,32 +4,35 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const places = await db.placeStore.getUserPlaces(loggedInUser._id);
+      const megalithicMonuments = await db.megalithicStore.getUserMegMonuments(loggedInUser._id);
       const viewData = {
         title: "Megalithic Ireland Dashboard",
         user: loggedInUser,
-        places: places,
+        megalithicMonuments: megalithicMonuments,
       };
       return h.view("dashboard-view", viewData);
     },
   },
 
-  addPlace: {
+  addMegalithicMonument: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const newPlace = {
+      const newMegalithicMonument = {
         userid: loggedInUser._id,
         name: request.payload.name,
+        description: request.payload.description,
+        lat: request.payload.lat,
+        lng: request.payload.lng
       };
-      await db.placeStore.addPlace(newPlace);
+      await db.megalithicStore.addMegalithicMonument(newMegalithicMonument);
       return h.redirect("/dashboard");
     },
   },
 
-  deletePlace: {
+  deleteMegalithicMonument: {
     handler: async function (request, h) {
-      const getPlace = await db.placeStore.getPlaceById(request.params.id);
-      await db.placeStore.deletePlaceById(getPlace._id);
+      const getMegMonument = await db.megalithicStore.getMegalithicMonumentById(request.params.id);
+      await db.megalithicStore.deleteMegalithicMonumentById(getMegMonument._id);
       return h.redirect("/dashboard");
     },
   },
