@@ -33,16 +33,16 @@ suite("Place Model tests", () => {
     assert.equal(dublin, place);
     
   });
-/*
-  test("delete One Playist - success", async () => {
+
+  test("delete One place - success", async () => {
     const id = testPlaces[0]._id;
-    await db.PlaceStore.deletePlaceById(id);
-    const returnedPlaces = await db.PlaceStore.getAllPlaces();
+    await db.placeStore.deletePlaceById(id);
+    const returnedPlaces = await db.placeStore.getAllPlaces();
     assert.equal(returnedPlaces.length, testPlaces.length - 1);
-    const deletedPlace = await db.PlaceStore.getPlaceById(id);
+    const deletedPlace = await db.placeStore.getPlaceById(id);
     assert.isNull(deletedPlace);
   });
-
+/*
   test("get a Place - bad params", async () => {
     assert.isNull(await db.PlaceStore.getPlaceById(""));
     assert.isNull(await db.PlaceStore.getPlaceById());

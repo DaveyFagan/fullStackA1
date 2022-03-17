@@ -22,8 +22,12 @@ export const placeJsonStore = {
 
   async getPlaceById(id) {
     await db.read();
-    const list = db.data.places.find((place) => place._id === id);
+    let list = db.data.places.find((place) => place._id === id);
+    if (list) {
     list.monuments = await monumentJsonStore.getMonumentsByPlaceId(list._id);
+    } else {
+      list = null;
+    }
     return list;
   },
 
