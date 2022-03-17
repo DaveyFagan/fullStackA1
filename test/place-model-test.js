@@ -42,10 +42,10 @@ suite("Place Model tests", () => {
     const deletedPlace = await db.placeStore.getPlaceById(id);
     assert.isNull(deletedPlace);
   });
-/*
+
   test("get a Place - bad params", async () => {
-    assert.isNull(await db.PlaceStore.getPlaceById(""));
-    assert.isNull(await db.PlaceStore.getPlaceById());
+    assert.isNull(await db.placeStore.getPlaceById(""));
+    assert.isNull(await db.placeStore.getPlaceById());
   });
 
   test("delete One Place - fail", async () => {
@@ -53,5 +53,5 @@ suite("Place Model tests", () => {
     const allPlaces = await db.PlaceStore.getAllPlaces();
     assert.equal(testPlaces.length, allPlaces.length);
   });
-  */
+  
 });
