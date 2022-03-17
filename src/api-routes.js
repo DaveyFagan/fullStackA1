@@ -1,4 +1,5 @@
 import { megalithicApi } from "./api/megalithic-api.js";
+import { placeApi } from "./api/place-api.js";
 import { userApi } from "./api/user-api.js";
 
 export const apiRoutes = [
@@ -12,5 +13,7 @@ export const apiRoutes = [
   { method: "GET", path: "/api/megalithicmonuments", config: megalithicApi.find },
   { method: "GET", path: "/api/megalithicmonuments/{id}", config: megalithicApi.findOne},
   { method: "DELETE", path: "/api/megalithicmonuments", config: megalithicApi.deleteAll},
-  { method: "DELETE", path: "/api/megalithicmonuments/{id}", config: megalithicApi.deleteOne}
+  { method: "DELETE", path: "/api/megalithicmonuments/{id}", config: megalithicApi.deleteOne},
+
+  { method: "POST", path: "/api/places", config: placeApi.create },
 ];
