@@ -1,0 +1,56 @@
+import { assert } from "chai";
+import { db } from "../src/models/db.js";
+import { testPlaces, dublin } from "./fixtures.js";
+
+suite("Place Model tests", () => {
+
+  setup(async () => {
+    db.init("json");
+    await db.placeStore.deleteAllPlaces();
+    for (let i = 0; i < testPlaces.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      testPlaces[i] = await db.placeStore.addPlace(testPlaces[i]);
+    }
+  });
+
+  test("create a Place", async () => {
+    const place = await db.placeStore.addPlace(dublin);
+    assert.equal(dublin, place);
+    assert.isDefined(place._id);
+  });
+
+  test("delete all Places", async () => {
+    let returnedPlaces = await db.placeStore.getAllPlaces();
+    assert.equal(returnedPlaces.length, 3);
+    await db.placeStore.deleteAllPlaces();
+    returnedPlaces = await db.placeStore.getAllPlaces();
+    assert.equal(returnedPlaces.length, 0);
+  });
+/*
+  test("get a Place - success", async () => {
+    const Place = await db.PlaceStore.addPlace(mozart);
+    const returnedPlace = await db.PlaceStore.getPlaceById(Place._id);
+    assert.equal(mozart, Place);
+  });
+
+  test("delete One Playist - success", async () => {
+    const id = testPlaces[0]._id;
+    await db.PlaceStore.deletePlaceById(id);
+    const returnedPlaces = await db.PlaceStore.getAllPlaces();
+    assert.equal(returnedPlaces.length, testPlaces.length - 1);
+    const deletedPlace = await db.PlaceStore.getPlaceById(id);
+    assert.isNull(deletedPlace);
+  });
+
+  test("get a Place - bad params", async () => {
+    assert.isNull(await db.PlaceStore.getPlaceById(""));
+    assert.isNull(await db.PlaceStore.getPlaceById());
+  });
+
+  test("delete One Place - fail", async () => {
+    await db.PlaceStore.deletePlaceById("bad-id");
+    const allPlaces = await db.PlaceStore.getAllPlaces();
+    assert.equal(testPlaces.length, allPlaces.length);
+  });
+  */
+});
