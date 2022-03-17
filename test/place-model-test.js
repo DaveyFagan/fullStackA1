@@ -5,7 +5,7 @@ import { testPlaces, dublin } from "./fixtures.js";
 suite("Place Model tests", () => {
 
   setup(async () => {
-    db.init("");
+    db.init("json");
     await db.placeStore.deleteAllPlaces();
     for (let i = 0; i < testPlaces.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
