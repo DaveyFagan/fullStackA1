@@ -34,11 +34,11 @@ export const placeApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const megalithicMonument = await db.megalithicStore.getMegalithicMonumentById(request.params.id);
-        if (!megalithicMonument) {
+        const place = await db.placeStore.getPlaceById(request.params.id);
+        if (!place) {
           return Boom.notFound("No Monument with this id");
         }
-        return megalithicMonument;
+        return place;
       } catch (err) {
         return Boom.serverUnavailable("No Monument with this id");
       }
@@ -51,12 +51,12 @@ export const placeApi = {
       auth: false,
       handler: async function (request, h) {
           try {
-              await db.megalithicStore.deleteMegalithicMonumentById(request.params.id);
-              const megalithicMonuments = await db.megalithicStore.getAllMegalithicMonuments();
+              await db.placeStore.deletePlaceById(request.params.id);
+              const places = await db.placeStore.getAllPlaces();
 
-              return megalithicMonuments;
+              return places;
           }catch (err) {
-              return Boom.serverUnavailable("No Monument with this id")
+              return Boom.serverUnavailable("No Place with this id")
           }
       }
   },
@@ -65,7 +65,7 @@ export const placeApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        await db.megalithicStore.deleteAllMegalithicMonuments();
+        await db.placeStore.deleteAllPlaces();
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");

@@ -17,4 +17,7 @@ export const apiRoutes = [
 
   { method: "POST", path: "/api/places", config: placeApi.create },
   { method: "GET", path: "/api/places", config: placeApi.find },
+  { method: "GET", path: "/api/places/{id}", config: placeApi.findOne},
+  { method: "DELETE", path: "/api/places", config: placeApi.deleteAll},
+  { method: "DELETE", path: "/api/places/{id}", config: placeApi.deleteOne},
 ];
