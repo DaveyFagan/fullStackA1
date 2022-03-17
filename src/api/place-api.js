@@ -2,6 +2,7 @@ import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 
 export const placeApi = {
+    // user id not added
   create: {
     auth: false,
     handler: async function(request, h) {

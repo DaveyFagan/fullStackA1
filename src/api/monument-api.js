@@ -1,16 +1,16 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 
-export const megalithicApi = {
+export const monumentApi = {
   create: {
     auth: false,
     handler: async function(request, h) {
       try {
-        const megalithicMonument = await db.megalithicStore.addMegalithicMonument(request.payload);
-        if (megalithicMonument) {
-          return h.response(megalithicMonument).code(201);
+        const monument = await db.monumentStore.addMonument(request.payload);
+        if (monument) {
+          return h.response(monument).code(201);
         }
-        return Boom.badImplementation("error creating user");
+        return Boom.badImplementation("error creating monument");
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
@@ -21,8 +21,8 @@ export const megalithicApi = {
     auth: false,
     handler: async function(request, h) {
       try {
-        const megalithicMonuments = await db.megalithicStore.getAllMegalithicMonuments();
-        return megalithicMonuments;
+        const monuments = await db.monumentStore.getAllMonuments();
+        return monuments;
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
@@ -33,11 +33,11 @@ export const megalithicApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const megalithicMonument = await db.megalithicStore.getMegalithicMonumentById(request.params.id);
-        if (!megalithicMonument) {
+        const monument = await db.monumentStore.getMonumentById(request.params.id);
+        if (!monument) {
           return Boom.notFound("No Monument with this id");
         }
-        return megalithicMonument;
+        return monument;
       } catch (err) {
         return Boom.serverUnavailable("No Monument with this id");
       }
@@ -50,10 +50,10 @@ export const megalithicApi = {
       auth: false,
       handler: async function (request, h) {
           try {
-              await db.megalithicStore.deleteMegalithicMonumentById(request.params.id);
-              const megalithicMonuments = await db.megalithicStore.getAllMegalithicMonuments();
+              await db.monumentStore.deleteMonumentById(request.params.id);
+              const monuments = await db.monumentStore.getAllMonuments();
 
-              return megalithicMonuments;
+              return monuments;
           }catch (err) {
               return Boom.serverUnavailable("No Monument with this id")
           }
@@ -64,7 +64,7 @@ export const megalithicApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        await db.megalithicStore.deleteAllMegalithicMonuments();
+        await db.monumentStore.deleteAllMonuments();
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");

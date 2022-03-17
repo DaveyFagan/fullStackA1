@@ -1,8 +1,8 @@
 import { v4 } from "uuid";
 
-let megalithicMonuments = [];
+let monuments = [];
 
-export const megalithicMemStore = {
+export const monumentMemStore = {
 /*
   async getUserMegMonuments(userid) {
     return megalithicMonuments.filter((megalithicMonument) => megalithicMonument.userid === userid);
@@ -34,40 +34,40 @@ export const megalithicMemStore = {
   */
 
   async getAllMonuments() {
-    return megalithicMonuments;
+    return monuments;
   },
 
-  async addMonument(placeId, megalithicMonument) {
-    megalithicMonument._id = v4();
-    megalithicMonument.placeid = placeId;
-    megalithicMonuments.push(megalithicMonument);
-    return megalithicMonument;
+  async addMonument(placeId, monument) {
+    monument._id = v4();
+    monument.placeid = placeId;
+    monuments.push(monument);
+    return monument;
   },
 
   async getMonumentsByplaceId(id) {
-    return megalithicMonuments.filter((megalithicMonument) => megalithicMonument.placeid === id);
+    return monuments.filter((monument) => monument.placeid === id);
   },
 
   async getMonumentById(id) {
-    return megalithicMonuments.find((megalithicMonument) => megalithicMonument._id === id);
+    return monuments.find((monument) => monument._id === id);
   },
 
   async getPlaceMonuments(placeId) {
-    return megalithicMonuments.filter((megalithicMonument) => megalithicMonument.placeid === placeId);
+    return monuments.filter((monument) => monument.placeid === placeId);
   },
 
-  async deleteMonument(id) {
-    const index = megalithicMonuments.findIndex((megalithicMonument) => megalithicMonument._id === id);
+  async deleteMonumentById(id) {
+    const index = monuments.findIndex((monument) => monument._id === id);
     monuments.splice(index, 1);
   },
 
   async deleteAllMonuments() {
-    megalithicMonuments = [];
+    monuments = [];
   },
 
-  async updateMonument(megalithicMonument, updatedmonument) {
-    megalithicMonument.name = updatedmonument.name;
-    megalithicMonument.description = updatedmonument.description;
-    megalithicMonument.lat = updatedmonument.lat;
+  async updateMonument(monument, updatedmonument) {
+    monument.name = updatedmonument.name;
+    monument.description = updatedmonument.description;
+    monument.lat = updatedmonument.lat;
   },
 };

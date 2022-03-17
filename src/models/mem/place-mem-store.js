@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import {megalithicMemStore} from "./megalithic-mem-store.js";
+import {monumentMemStore} from "./monument-mem-store.js";
 
 let places = [];
 
@@ -21,7 +21,7 @@ export const placeMemStore = {
 
   async getPlaceById(id) {
     const list = places.find((place) => place._id === id);
-    list.megalithicMonuments = await megalithicMemStore.getMonumentsByplaceId(list._id);
+    list.monuments = await monumentMemStore.getMonumentsByplaceId(list._id);
     return list;
   },
 

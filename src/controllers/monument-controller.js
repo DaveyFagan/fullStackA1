@@ -13,24 +13,24 @@ export const monumentController = {
     },
   },
 
-  addMegalithicMonument: {
+  addMonument: {
     handler: async function (request, h) {
       const place = await db.placeStore.getPlaceById(request.params.id);
-      const newMegalithicMonument = {
+      const newMonument = {
         name: request.payload.name,
         description: request.payload.description,
         lat: request.payload.lat,
         lng: request.payload.lng
       };
-      await db.megalithicStore.addMonument(place._id, newMegalithicMonument);
+      await db.monumentStore.addMonument(place._id, newMonument);
       return h.redirect(`/place/${place._id}`);
     },
   },
 
-  deleteMegalithicMonument: {
+  deleteMonument: {
     handler: async function (request, h) {
-      const getMegMonument = await db.megalithicStore.getMegalithicMonumentById(request.params.id);
-      await db.megalithicStore.deleteMegalithicMonumentById(getMegMonument._id);
+      const getMonument = await db.monumentStore.getMonumentById(request.params.id);
+      await db.monumentStore.deleteMonumentById(getMonument._id);
       return h.redirect("/dashboard");
     },
   },
