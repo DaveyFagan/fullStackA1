@@ -26,13 +26,14 @@ suite("Place Model tests", () => {
     returnedPlaces = await db.placeStore.getAllPlaces();
     assert.equal(returnedPlaces.length, 0);
   });
-/*
-  test("get a Place - success", async () => {
-    const Place = await db.PlaceStore.addPlace(mozart);
-    const returnedPlace = await db.PlaceStore.getPlaceById(Place._id);
-    assert.equal(mozart, Place);
-  });
 
+  test("get a Place - success", async () => {
+    const place = await db.placeStore.addPlace(dublin);
+    const returnedPlace = await db.placeStore.getPlaceById(place._id);
+    assert.equal(dublin, place);
+    
+  });
+/*
   test("delete One Playist - success", async () => {
     const id = testPlaces[0]._id;
     await db.PlaceStore.deletePlaceById(id);
