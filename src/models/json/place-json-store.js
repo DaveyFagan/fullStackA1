@@ -27,6 +27,10 @@ export const placeJsonStore = {
     return list;
   },
 
+  async getUserPlaces(userid) {
+    await db.read();
+    return db.data.places.filter((place) => place.userid === userid);
+  },
 
   async deletePlaceById(id) {
     await db.read();
@@ -35,13 +39,8 @@ export const placeJsonStore = {
     await db.write();
   },
 
-  async deleteAll() {
+  async deleteAllPlaces() {
     db.data.places = [];
     await db.write();
   },
-
-  async getUserPlaces(userid) {
-    await db.read();
-    return db.data.places.filter((place) => place.userid === userid); 
-},
 };

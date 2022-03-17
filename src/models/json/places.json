@@ -1,14 +1,9 @@
 {
   "places": [
     {
-      "userid": "82186443-dc20-485e-9398-f8427bd28009",
+      "userid": "478261af-3bb7-4b7e-90e5-c658f9a15ea8",
       "name": "Dublin",
-      "_id": "43a34d7d-8546-4aa3-a40f-5248ded8c501"
-    },
-    {
-      "userid": "82186443-dc20-485e-9398-f8427bd28009",
-      "name": "Sligo",
-      "_id": "a82a8472-1488-4585-bfcf-c96fb6ce0ffc"
+      "_id": "508c15a5-38e8-4f3c-bcda-fd242f847ba7"
     }
   ]
 }

@@ -5,48 +5,16 @@
       "description": "",
       "lat": "",
       "lng": "",
-      "_id": "3a7a8d39-77d9-42c4-81d4-2939c6782854",
-      "placeId": "43a34d7d-8546-4aa3-a40f-5248ded8c501"
+      "_id": "43798223-656d-4266-b9ff-bec555dfceda",
+      "placeid": "508c15a5-38e8-4f3c-bcda-fd242f847ba7"
     },
     {
-      "name": "newgrange",
+      "name": "stone henge",
       "description": "",
       "lat": "",
       "lng": "",
-      "_id": "77bc4624-7126-477c-9891-517bfa690713",
-      "placeId": "43a34d7d-8546-4aa3-a40f-5248ded8c501"
-    },
-    {
-      "name": "Newgrange",
-      "description": "",
-      "lat": "",
-      "lng": "",
-      "_id": "166df171-1ff1-4160-80d9-8c96e949fd75",
-      "placeId": "43a34d7d-8546-4aa3-a40f-5248ded8c501"
-    },
-    {
-      "name": "newgrange",
-      "description": "",
-      "lat": "",
-      "lng": "",
-      "_id": "57b0c24d-4c70-4e09-8fd4-6e4914117037",
-      "placeId": "43a34d7d-8546-4aa3-a40f-5248ded8c501"
-    },
-    {
-      "name": "sdf",
-      "description": "",
-      "lat": "",
-      "lng": "",
-      "_id": "f343512c-3715-4d5a-93cc-b623b0580ca5",
-      "placeId": "a82a8472-1488-4585-bfcf-c96fb6ce0ffc"
-    },
-    {
-      "name": "sdfs",
-      "description": "",
-      "lat": "",
-      "lng": "",
-      "_id": "905a8876-56be-4f59-b223-9f22baf7a95a",
-      "placeId": "a82a8472-1488-4585-bfcf-c96fb6ce0ffc"
+      "_id": "1393db40-b8e4-4ed0-9de0-4732f9b4c0b7",
+      "placeid": "508c15a5-38e8-4f3c-bcda-fd242f847ba7"
     }
   ]
 }

@@ -6,45 +6,46 @@ const db = new Low(new JSONFile("./src/models/json/monuments.json"));
 db.data = { monuments: [] };
 
 export const monumentJsonStore = {
-    async getAllMonuments() {
-        await db.read();
-        return db.data.monuments;
-    },
+  async getAllMonuments() {
+    await db.read();
+    return db.data.monuments;
+  },
 
-    async addMonument(placeId, monument) {
-        await db.read();
-        monument._id = v4();
-        monument.placeId = placeId;
-        db.data.monuments.push(monument);
-        await db.write();
-        return monument;
-    },
+  async addMonument(placeId, monument) {
+    await db.read();
+    monument._id = v4();
+    monument.placeid = placeId;
+    db.data.monuments.push(monument);
+    await db.write();
+    return monument;
+  },
 
-    async getUserMonuments(userid) {
-        await db.read();
-        return db.data.monuments.filter((monument) => monument.userid === userid); 
-    },
+  async getMonumentsByPlaceId(id) {
+    await db.read();
+    return db.data.monuments.filter((monument) => monument.placeid === id);
+  },
 
-    async deleteMonumentById(id) {
-        await db.read();
-        const index = db.data.monuments.findIndex((monument) => monument._id === id);
-        db.data.monuments.splice(index, 1);
-        await db.write();
-    },
+  async getMonumentById(id) {
+    await db.read();
+    return db.data.monuments.find((monument) => monument._id === id);
+  },
 
-    async deleteAllMonuments() {
-        db.data.monuments = [];
-        await db.write();
-    },
+  async deleteMonument(id) {
+    await db.read();
+    const index = db.data.monuments.findIndex((monument) => monument._id === id);
+    db.data.monuments.splice(index, 1);
+    await db.write();
+  },
 
-    async getMonumentById(id) {
-        await db.read();
-        return db.data.monuments.find((monument) => monument._id === id);
-    },
+  async deleteAllMonuments() {
+    db.data.monuments = [];
+    await db.write();
+  },
 
-    async getMonumentsByPlaceId(id) {
-        await db.read();
-        return db.data.monuments.filter((monument) => monument.placeid === id);
-      },
-}
-
+  async updateMonument(monument, updatedMonument) {
+    monument.title = updatedMonument.title;
+    monument.artist = updatedMonument.artist;
+    monument.duration = updatedMonument.duration;
+    await db.write();
+  },
+};
