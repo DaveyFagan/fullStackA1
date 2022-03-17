@@ -3,42 +3,42 @@ import { v4 } from "uuid";
 import { JSONFile, Low } from "lowdb";
 
 const db = new Low(new JSONFile("./src/models/json/megalithics.json"));
-db.data = { megalithics: [] };
+db.data = { monuments: [] };
 
 export const megalithicJsonStore = {
-    async getAllMegalithicMonuments() {
+    async getAllMonuments() {
         await db.read();
-        return db.data.megalithics;
+        return db.data.monuments;
     },
 
-    async addMegalithicMonument(megalithic) {
+    async addMonument(monument) {
         await db.read();
-        megalithic._id = v4();
-        db.data.megalithics.push(megalithic);
+        monument._id = v4();
+        db.data.monuments.push(monument);
         await db.write();
-        return megalithic;
+        return monument;
     },
 
-    async getUserMegMonuments(userid) {
+    async getUserMonuments(userid) {
         await db.read();
-        return db.data.megalithics.filter((megalithic) => megalithic.userid === userid); 
+        return db.data.monuments.filter((monument) => monument.userid === userid); 
     },
 
-    async deleteMegalithicMonumentById(id) {
+    async deleteMonumentById(id) {
         await db.read();
-        const index = db.data.megalithics.findIndex((megalithic) => megalithic._id === id);
-        db.data.megalithics.splice(index, 1);
-        await db.write();
-    },
-
-    async deleteAllMegalithicMonuments() {
-        db.data.megalithics = [];
+        const index = db.data.monuments.findIndex((monument) => monument._id === id);
+        db.data.monuments.splice(index, 1);
         await db.write();
     },
 
-    async getMegalithicMonumentById(id) {
+    async deleteAllMonuments() {
+        db.data.monuments = [];
+        await db.write();
+    },
+
+    async getMonumentById(id) {
         await db.read();
-        const list = db.data.megalithics.find((megalithic) =>  megalithic._id === id);
+        const list = db.data.monuments.find((monument) =>  monument._id === id);
         return list;
     }
 }
