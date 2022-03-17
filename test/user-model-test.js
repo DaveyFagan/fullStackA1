@@ -45,4 +45,11 @@ suite("User API tests", () => {
     const deletedUser = await db.userStore.getUserById(testUsers[0]._id);
     assert.isNull(deletedUser);
   });
+
+  test("get a user - failures", async () => {
+    const noUserWithId = await db.userStore.getUserById("123");
+    assert.isNull(noUserWithId);
+    const noUserWithEmail = await db.userStore.getUserByEmail("no@one.com");
+    assert.isNull(noUserWithEmail);
+  });
 });
