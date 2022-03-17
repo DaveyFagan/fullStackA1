@@ -54,4 +54,9 @@ suite("Monument Model tests", () => {
     assert.isNull(deletedMonument);
   });
 
+  test("get a monument - bad params", async () => {
+    assert.isNull(await db.monumentStore.getMonumentById(""));
+    assert.isNull(await db.monumentStore.getMonumentById());
+  });
+
 });
