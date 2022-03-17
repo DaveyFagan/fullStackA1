@@ -20,7 +20,9 @@ export const monumentMemStore = {
   },
 
   async getMonumentById(id) {
-    return monuments.find((monument) => monument._id === id);
+    let u = monuments.find((monument) => monument._id === id);
+    if (u === undefined) u = null;
+    return u;
   },
 
   async getPlaceMonuments(placeId) {
@@ -29,7 +31,7 @@ export const monumentMemStore = {
 
   async deleteMonumentById(id) {
     const index = monuments.findIndex((monument) => monument._id === id);
-    monuments.splice(index, 1);
+    if (index !== -1) monuments.splice(index, 1);
   },
 
   async deleteAllMonuments() {

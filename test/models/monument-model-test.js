@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testMonuments, newbridge, dublin } from "../fixtures.js";
+import { testPlaces, testMonuments, newbridge, dublin } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 
@@ -44,6 +44,14 @@ suite("Monument Model tests", () => {
     const monument = await db.monumentStore.addMonument(dublinList._id, newbridge)
     const newMonument = await db.monumentStore.getMonumentById(monument._id);
     assertSubset (newbridge, newMonument);
+  });
+
+  test("delete One monument - success", async () => {
+    await db.monumentStore.deleteMonumentById(testMonuments[0]._id);
+    const monuments = await db.monumentStore.getAllMonuments();
+    assert.equal(monuments.length, testPlaces.length - 1);
+    const deletedMonument = await db.monumentStore.getMonumentById(testMonuments[0]._id);
+    assert.isNull(deletedMonument);
   });
 
 });
