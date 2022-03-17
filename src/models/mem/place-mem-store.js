@@ -30,7 +30,7 @@ export const placeMemStore = {
 
   async deletePlaceById(id) {
     const index = places.findIndex((place) => place._id === id);
-    places.splice(index, 1);
+    if (index !== -1) places.splice(index, 1);
   },
 
   async deleteAllPlaces() {
