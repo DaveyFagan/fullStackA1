@@ -25,40 +25,10 @@ suite("Monument Model tests", () => {
     assert.isNotNull(monument._id);
     assertSubset (newbridge, monument);
   });
-/*
-  test("delete all Monuments", async () => {
-    let returnedMonuments = await db.MonumentStore.getAllMonuments();
-    assert.equal(returnedMonuments.length, 3);
-    await db.MonumentStore.deleteAllMonuments();
-    returnedMonuments = await db.MonumentStore.getAllMonuments();
-    assert.equal(returnedMonuments.length, 0);
+
+  test("create multiple monument test", async () => {
+    const monuments = await db.placeStore.getPlaceById(monumentList._id);
+    assert.equal(testMonuments.length, testMonuments.length)
   });
 
-  test("get a Monument - success", async () => {
-    const Monument = await db.MonumentStore.addMonument(newbridge);
-    const returnedMonument = await db.MonumentStore.getMonumentById(Monument._id);
-    assert.equal(newbridge, Monument);
-    
-  });
-
-  test("delete One Monument - success", async () => {
-    const id = testMonuments[0]._id;
-    await db.MonumentStore.deleteMonumentById(id);
-    const returnedMonuments = await db.MonumentStore.getAllMonuments();
-    assert.equal(returnedMonuments.length, testMonuments.length - 1);
-    const deletedMonument = await db.MonumentStore.getMonumentById(id);
-    assert.isNull(deletedMonument);
-  });
-
-  test("get a Monument - bad params", async () => {
-    assert.isNull(await db.MonumentStore.getMonumentById(""));
-    assert.isNull(await db.MonumentStore.getMonumentById());
-  });
-
-  test("delete One Monument - fail", async () => {
-    await db.MonumentStore.deleteMonumentById("bad-id");
-    const allMonuments = await db.MonumentStore.getAllMonuments();
-    assert.equal(testMonuments.length, allMonuments.length);
-  });
-  */
 });
