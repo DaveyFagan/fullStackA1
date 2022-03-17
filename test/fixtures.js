@@ -41,3 +41,31 @@ export const testPlaces = [
         name: "Meath"
     }
 ]
+
+export const newbridge = {
+    name: "Newbridge",
+    description: "Buriel Chamber",
+    lat: "34",
+    lng: "56"
+}
+
+export const testMonuments = [
+    {
+        name: "Newbridge",
+        description: "Buriel Chamber",
+        lat: "34",
+        lng: "56"
+    },
+    {
+        name: "Carrowmore",
+        description: "Cemetary",
+        lat: "66",
+        lng: "89"
+    },
+    {
+        name: "Knowth",
+        description: "Passage tomb",
+        lat: "99",
+        lng: "55"
+    }
+]
