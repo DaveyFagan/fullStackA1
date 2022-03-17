@@ -61,4 +61,14 @@ suite("User API tests", () => {
     nullUser = await db.userStore.getUserById();
     assert.isNull(nullUser);
   });
+
+  test("delete One User - fail", async () => {
+    for (let i = 0; i < testUsers.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      await db.userStore.addUser(testUsers[i]);
+    }
+    await db.userStore.deleteUserById("bad-id");
+    const allUsers = await db.userStore.getAllUsers();
+    assert.equal(testUsers.length, allUsers.length);
+  });
 });
