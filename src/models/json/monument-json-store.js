@@ -11,9 +11,10 @@ export const monumentJsonStore = {
         return db.data.monuments;
     },
 
-    async addMonument(monument) {
+    async addMonument(placeId, monument) {
         await db.read();
         monument._id = v4();
+        monument.placeId = placeId;
         db.data.monuments.push(monument);
         await db.write();
         return monument;
@@ -38,8 +39,12 @@ export const monumentJsonStore = {
 
     async getMonumentById(id) {
         await db.read();
-        const list = db.data.monuments.find((monument) =>  monument._id === id);
-        return list;
-    }
+        return db.data.monuments.find((monument) => monument._id === id);
+    },
+
+    async getMonumentsByPlaceId(id) {
+        await db.read();
+        return db.data.monuments.filter((monument) => monument.placeid === id);
+      },
 }
 

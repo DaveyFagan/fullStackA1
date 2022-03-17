@@ -3,35 +3,6 @@ import { v4 } from "uuid";
 let monuments = [];
 
 export const monumentMemStore = {
-/*
-  async getUserMegMonuments(userid) {
-    return megalithicMonuments.filter((megalithicMonument) => megalithicMonument.userid === userid);
-  },
-// done
-  async getAllMegalithicMonuments() {
-    return megalithicMonuments;
-  },
-// done
-  async addMegalithicMonument(placeId, megalithicMonument) {
-    megalithicMonument._id = v4();
-    megalithicMonument.placeid = placeId;
-    megalithicMonuments.push(megalithicMonument)
-    return megalithicMonument;
-  },
-
-  async getMegalithicMonumentById(id) {
-    return megalithicMonuments.find((megalithicMonument) => megalithicMonument._id === id);
-  },
-
-  async deleteMegalithicMonumentById(id) {
-    const index = megalithicMonuments.findIndex((megalithicMonument) => megalithicMonument._id === id);
-    megalithicMonuments.splice(index, 1);
-  },
-
-  async deleteAllMegalithicMonuments() {
-    megalithicMonuments = [];
-  },
-  */
 
   async getAllMonuments() {
     return monuments;

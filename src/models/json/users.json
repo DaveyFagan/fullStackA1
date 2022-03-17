@@ -1,11 +1,18 @@
 {
   "users": [
     {
-      "firstName": "David",
-      "lastName": "Fagan",
+      "firstName": "",
+      "lastName": "",
       "email": "dave@mail.com",
       "password": "secret",
-      "_id": "cc04f511-5db1-4449-9219-5578390e8401"
+      "_id": "82186443-dc20-485e-9398-f8427bd28009"
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "dave@mail.com",
+      "password": "secret",
+      "_id": "1c3cf92e-fc80-4fd8-a879-acdfaa4c496e"
     }
   ]
 }

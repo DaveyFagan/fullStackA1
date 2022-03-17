@@ -4,10 +4,13 @@ export const monumentController = {
   index: {
     handler: async function (request, h) {
       const place = await db.placeStore.getPlaceById(request.params.id);
-     // const megalithicMonuments = await db.megalithicStore.getUserMegMonuments(loggedInUser._id);
+      // const place = await db.placeStore.getPlaylistById(request.params.id);
+      // const monuments = await db.monumentStore.getMonumentsByPlaceId(place._id);
+      console.log("Monuments:", "Place: ", place)
       const viewData = {
         title: "Place",
-        place: place
+        place: place,
+        // monuments: monuments
       };
       return h.view("monument-view", viewData);
     },
