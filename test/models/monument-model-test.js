@@ -59,4 +59,10 @@ suite("Monument Model tests", () => {
     assert.isNull(await db.monumentStore.getMonumentById());
   });
 
+  test("delete one monument - fail", async () => {
+    await db.monumentStore.deleteMonumentById("bad-id");
+    const monuments = await db.monumentStore.getAllMonuments();
+    assert.equal(monuments.length, testPlaces.length);
+  });
+
 });
