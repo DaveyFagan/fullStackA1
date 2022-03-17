@@ -31,4 +31,12 @@ suite("Monument Model tests", () => {
     assert.equal(testMonuments.length, testMonuments.length)
   });
 
+  test("delete all monument test", async () => {
+    const monuments = await db.monumentStore.getAllMonuments();
+    assert.equal(testMonuments.length, monuments.length);
+    await db.monumentStore.deleteAllMonuments();
+    const newMonuments = await db.monumentStore.getAllMonuments();
+    assert.equal(0, newMonuments.length);
+  });
+
 });
