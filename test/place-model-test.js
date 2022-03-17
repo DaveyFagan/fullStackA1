@@ -49,8 +49,8 @@ suite("Place Model tests", () => {
   });
 
   test("delete One Place - fail", async () => {
-    await db.PlaceStore.deletePlaceById("bad-id");
-    const allPlaces = await db.PlaceStore.getAllPlaces();
+    await db.placeStore.deletePlaceById("bad-id");
+    const allPlaces = await db.placeStore.getAllPlaces();
     assert.equal(testPlaces.length, allPlaces.length);
   });
   

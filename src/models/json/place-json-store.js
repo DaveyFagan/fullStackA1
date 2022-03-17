@@ -39,7 +39,7 @@ export const placeJsonStore = {
   async deletePlaceById(id) {
     await db.read();
     const index = db.data.places.findIndex((place) => place._id === id);
-    db.data.places.splice(index, 1);
+    if (index !== -1) db.data.places.splice(index, 1);
     await db.write();
   },
 
