@@ -21,8 +21,11 @@ export const placeMemStore = {
 
   async getPlaceById(id) {
     const list = places.find((place) => place._id === id);
-    list.monuments = await monumentMemStore.getMonumentsByplaceId(list._id);
-    return list;
+    if (list) {
+      list.monuments = await monumentMemStore.getMonumentsByplaceId(list._id);
+      return list;
+    }
+    return null;
   },
 
   async deletePlaceById(id) {
