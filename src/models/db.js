@@ -15,16 +15,18 @@ export const db = {
   monumentStore: null,
   placeStore: null,
 
-  init() {
-   /* 
-    this.userStore = userJsonStore;
-    this.monumentStore = monumentJsonStore;
-    this.placeStore = placeJsonStore;
-   */ 
-  
-    this.userStore = userMemStore;
-    this.monumentStore = monumentMemStore;
-    this.placeStore = placeMemStore;
+  init(storeType) {
+    switch (storeType) {
+      case "json":    
+        this.userStore = userJsonStore;
+        this.monumentStore = monumentJsonStore;
+        this.placeStore = placeJsonStore;
+        break;
+      default:  
+        this.userStore = userMemStore;
+        this.monumentStore = monumentMemStore;
+        this.placeStore = placeMemStore;
     
+    } 
   },
 };
