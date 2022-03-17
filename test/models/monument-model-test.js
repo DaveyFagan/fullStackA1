@@ -39,4 +39,11 @@ suite("Monument Model tests", () => {
     assert.equal(0, newMonuments.length);
   });
 
+  test("get a monument - success", async () => {
+    const dublinList = await db.placeStore.addPlace(dublin);
+    const monument = await db.monumentStore.addMonument(dublinList._id, newbridge)
+    const newMonument = await db.monumentStore.getMonumentById(monument._id);
+    assertSubset (newbridge, newMonument);
+  });
+
 });
