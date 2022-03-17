@@ -25,3 +25,19 @@ export const maggie = {
       password: "secret",
     },
   ];
+
+export const dublin = {
+    name: "Dublin"
+}
+
+export const testPlaces = [
+    {
+        name: "Dublin"
+    },
+    {
+        name: "Sligo"
+    },
+    {
+        name: "Meath"
+    }
+]
