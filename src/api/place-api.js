@@ -21,8 +21,8 @@ export const placeApi = {
     auth: false,
     handler: async function(request, h) {
       try {
-        const megalithicMonuments = await db.megalithicStore.getAllMegalithicMonuments();
-        return megalithicMonuments;
+        const places = await db.placeStore.getAllPlaces();
+        return places;
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }

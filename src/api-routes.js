@@ -16,4 +16,5 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/megalithicmonuments/{id}", config: megalithicApi.deleteOne},
 
   { method: "POST", path: "/api/places", config: placeApi.create },
+  { method: "GET", path: "/api/places", config: placeApi.find },
 ];
