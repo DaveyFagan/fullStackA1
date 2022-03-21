@@ -6,6 +6,7 @@ import { placeMemStore } from "./mem/place-mem-store.js";
 import { userJsonStore } from "./json/user-json-store.js";
 import { monumentJsonStore } from "./json/monument-json-store.js";
 import { placeJsonStore } from "./json/place-json-store.js";
+import { adminJsonStore } from "./json/admin-json-store.js";
 
 import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { connectMongo } from "./mongo/connect.js";
@@ -16,6 +17,7 @@ export const db = {
   userStore: null,
   monumentStore: null,
   placeStore: null,
+  adminStore: null,
 
   init(storeType) {
     switch (storeType) {
@@ -23,6 +25,7 @@ export const db = {
         this.userStore = userJsonStore;
         this.monumentStore = monumentJsonStore;
         this.placeStore = placeJsonStore;
+        this.adminStore = adminJsonStore;
         break;
       case "mongo":
         this.userStore = userMongoStore;

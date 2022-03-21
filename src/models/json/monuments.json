@@ -39,6 +39,14 @@
       "lng": "45",
       "_id": "3030c402-3dff-48f8-a130-a0d9e447b872",
       "placeid": "369d372b-9fcf-4ffb-a12a-56a1d219e08b"
+    },
+    {
+      "name": "sdf",
+      "description": "",
+      "lat": "",
+      "lng": "",
+      "_id": "985a735a-a73c-4229-8a02-f1d29cbd424b",
+      "placeid": "369d372b-9fcf-4ffb-a12a-56a1d219e08b"
     }
   ]
 }
