@@ -17,6 +17,7 @@ export const monumentJsonStore = {
     monument.placeid = placeId;
     db.data.monuments.push(monument);
     await db.write();
+    console.log(`Monument is: ${  monument}`);
     return monument;
   },
 

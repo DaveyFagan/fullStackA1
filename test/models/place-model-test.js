@@ -1,11 +1,12 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
 import { testPlaces, dublin } from "../fixtures.js";
+import { assertSubset } from "../test-utils.js";
 
 suite("Place Model tests", () => {
 
   setup(async () => {
-    db.init("json");
+    db.init("mongo");
     await db.placeStore.deleteAllPlaces();
     for (let i = 0; i < testPlaces.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
@@ -15,8 +16,7 @@ suite("Place Model tests", () => {
 
   test("create a Place", async () => {
     const place = await db.placeStore.addPlace(dublin);
-    assert.equal(dublin, place);
-    assert.isDefined(place._id);
+    assertSubset(dublin, place);
   });
 
   test("delete all Places", async () => {
@@ -30,7 +30,7 @@ suite("Place Model tests", () => {
   test("get a Place - success", async () => {
     const place = await db.placeStore.addPlace(dublin);
     const returnedPlace = await db.placeStore.getPlaceById(place._id);
-    assert.equal(dublin, place);
+    assertSubset(dublin, place);
     
   });
 

@@ -5,12 +5,12 @@ export const monumentController = {
     handler: async function (request, h) {
       const place = await db.placeStore.getPlaceById(request.params.id);
       // const place = await db.placeStore.getPlaylistById(request.params.id);
-      // const monuments = await db.monumentStore.getMonumentsByPlaceId(place._id);
+      const monuments = await db.monumentStore.getMonumentsByPlaceId(place._id);
       console.log("Monuments:", "Place: ", place)
       const viewData = {
         title: "Place",
         place: place,
-        // monuments: monuments
+        monuments: monuments
       };
       return h.view("monument-view", viewData);
     },

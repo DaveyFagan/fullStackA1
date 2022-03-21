@@ -31,12 +31,14 @@ export const accountsController = {
     auth: false,
     handler: async function (request, h) {
       const { email, password } = request.payload;
+      console.log(`Email and password: ${  email  }${password}`)
       const user = await db.userStore.getUserByEmail(email);
       if (!user || user.password !== password) {
         return h.redirect("/");
       }
       request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");
+      
     },
   },
   logout: {
