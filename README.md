@@ -8,10 +8,14 @@ The places are specific to the user that created them and the monuments to the p
 is developed for the user, place and monument models. There is also a basic api.
 
 # Building
+```
 npm install
+```
 
 To run application, execute the following in the project folder:
+```
 npm start run
+```
 
 The application should be served on:
-  http://localhost:3000/
+  - http://localhost:3000/
