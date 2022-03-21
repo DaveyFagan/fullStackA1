@@ -2,20 +2,15 @@
   "places": [
     {
       "name": "Dublin",
-      "_id": "c86ff208-6f06-42cb-9a16-96d45da3100e"
+      "_id": "72b24f35-88e5-448b-ac68-c5efea1dee70"
     },
     {
       "name": "Sligo",
-      "_id": "a90816ec-1141-489f-8d3d-3b190b04ad98"
+      "_id": "35ed3f1c-5c96-4c76-85af-224924dbb4dd"
     },
     {
       "name": "Meath",
-      "_id": "28a30023-d0ff-4e9e-b2e3-ded4cd8a3227"
-    },
-    {
-      "userid": "74329fe2-27a1-4524-a9ba-2e0c1c877b0f",
-      "name": "Dublin",
-      "_id": "898af77a-3ee1-4691-b376-a36ed334039b"
+      "_id": "ddce73c8-8e63-4212-82b4-840c4735198b"
     }
   ]
 }

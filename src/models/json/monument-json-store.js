@@ -27,13 +27,15 @@ export const monumentJsonStore = {
 
   async getMonumentById(id) {
     await db.read();
-    return db.data.monuments.find((monument) => monument._id === id);
+    let u = db.data.monuments.find((monument) => monument._id === id);
+    if (u === undefined) u = null;
+    return u;
   },
 
-  async deleteMonument(id) {
+  async deleteMonumentById(id) {
     await db.read();
     const index = db.data.monuments.findIndex((monument) => monument._id === id);
-    db.data.monuments.splice(index, 1);
+    if (index !== -1) monuments.splice(index, 1);
     await db.write();
   },
 

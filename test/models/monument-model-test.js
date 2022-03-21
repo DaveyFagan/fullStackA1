@@ -9,7 +9,7 @@ suite("Monument Model tests", () => {
     let monumentList = null;
 
   setup(async () => {
-    db.init("");
+    db.init("json");
     await db.placeStore.deleteAllPlaces();
     monumentList = await db.placeStore.addPlace(dublin)
     await db.monumentStore.deleteAllMonuments();
