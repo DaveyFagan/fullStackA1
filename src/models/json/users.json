@@ -1,25 +1,11 @@
 {
   "users": [
     {
-      "firstName": "Homer",
-      "lastName": "Simpson",
-      "email": "homer@mail.ie",
-      "password": "secret",
-      "_id": "665e67e2-faed-426a-a029-4edab00dca9a"
-    },
-    {
       "firstName": "Admin",
       "lastName": "User",
       "email": "admin@mail.com",
       "password": "secret",
       "_id": "cb1a66d1-c000-416b-8c1c-1962887ee7a7"
-    },
-    {
-      "firstName": "David",
-      "lastName": "Fagan",
-      "email": "dave@mail.com",
-      "password": "secret",
-      "_id": "69b9cb84-8db1-4b3e-b8e0-65bf2cfbf350"
     }
   ]
 }
