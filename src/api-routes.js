@@ -9,7 +9,7 @@ export const apiRoutes = [
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
   { method: "DELETE", path: "/api/users/{id}", config: userApi.deleteOne},
 
-  { method: "POST", path: "/api/monuments", config: monumentApi.create },
+  { method: "POST", path: "/api/places/{id}/monuments", config: monumentApi.create },
   { method: "GET", path: "/api/monuments", config: monumentApi.find },
   { method: "GET", path: "/api/monuments/{id}", config: monumentApi.findOne},
   { method: "DELETE", path: "/api/monuments", config: monumentApi.deleteAll},

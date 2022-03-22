@@ -6,7 +6,7 @@ export const monumentApi = {
     auth: false,
     handler: async function(request, h) {
       try {
-        const monument = await db.monumentStore.addMonument(request.payload);
+        const monument = await db.monumentStore.addMonument(request.params.id, request.payload);
         if (monument) {
           return h.response(monument).code(201);
         }
@@ -46,19 +46,21 @@ export const monumentApi = {
 
 // fix later: When random id is used, the last monument is deleted.****
 
-  deleteOne: {
-      auth: false,
-      handler: async function (request, h) {
-          try {
-              await db.monumentStore.deleteMonumentById(request.params.id);
-              const monuments = await db.monumentStore.getAllMonuments();
-
-              return monuments;
-          }catch (err) {
-              return Boom.serverUnavailable("No Monument with this id")
-          }
+deleteOne: {
+  auth: false,
+  handler: async function (request, h) {
+    try {
+      const monument = await db.monumentStore.getMonumentById(request.params.id);
+      if (!monument) {
+        return Boom.notFound("No monument with this id");
       }
+      await db.monumentStore.deleteMonument(monument._id);
+      return h.response().code(204);
+    } catch (err) {
+      return Boom.serverUnavailable("No monument with this id");
+    }
   },
+},
 
   deleteAll: {
     auth: false,
