@@ -20,5 +20,6 @@ export const webRoutes = [
 
     { method: "GET", path: "/place/{id}", config: monumentController.index },
     { method: "POST", path: "/place/{id}/addmonument", config: monumentController.addMonument },
+    { method: "GET", path: "/place/{id}/deletemonument/{monumentid}", config: placeController.deleteMonument },
 
   ];
