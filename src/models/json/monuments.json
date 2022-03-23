@@ -23,22 +23,6 @@
       "lng": "55",
       "_id": "e90183f5-6715-40a4-adad-18d0e90821e9",
       "placeid": "31b5b1df-e2a2-4878-8885-645a6a7ece37"
-    },
-    {
-      "name": "newgrange",
-      "description": "",
-      "lat": "",
-      "lng": "",
-      "_id": "b061bf51-75ea-44f8-9eea-ba7139bff7e1",
-      "placeid": "1361c575-9406-44eb-b4d3-b59ae301f5d8"
-    },
-    {
-      "name": "stone henge",
-      "description": "",
-      "lat": "",
-      "lng": "",
-      "_id": "2a16ded6-dc74-4c7c-b1d0-67b3fbe9f732",
-      "placeid": "1361c575-9406-44eb-b4d3-b59ae301f5d8"
     }
   ]
 }

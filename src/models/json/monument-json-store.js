@@ -36,7 +36,7 @@ export const monumentJsonStore = {
   async deleteMonumentById(id) {
     await db.read();
     const index = db.data.monuments.findIndex((monument) => monument._id === id);
-    if (index !== -1) monuments.splice(index, 1);
+    if (index !== -1) db.data.monuments.splice(index, 1);
     await db.write();
   },
 

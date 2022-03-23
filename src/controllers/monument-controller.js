@@ -5,12 +5,12 @@ export const monumentController = {
     handler: async function (request, h) {
       const place = await db.placeStore.getPlaceById(request.params.id);
       // const place = await db.placeStore.getPlaylistById(request.params.id);
-      const monuments = await db.monumentStore.getMonumentsByPlaceId(place._id);
+      // const monuments = await db.monumentStore.getMonumentsByPlaceId(place._id);
       console.log("Monuments:", "Place: ", place)
       const viewData = {
         title: "Place",
         place: place,
-        monuments: monuments
+        // monuments: monuments
       };
       return h.view("monument-view", viewData);
     },
@@ -32,9 +32,9 @@ export const monumentController = {
 
   deleteMonument: {
     handler: async function (request, h) {
-      const getMonument = await db.monumentStore.getMonumentById(request.params.id);
-      await db.monumentStore.deleteMonumentById(getMonument._id);
-      return h.redirect("/dashboard");
+      const place = await db.placeStore.getPlaceById(request.params.id);
+      await db.monumentStore.deleteMonumentById(request.params.monumentid);
+      return h.redirect(`/place/${place._id}`);
     },
   },
 };
