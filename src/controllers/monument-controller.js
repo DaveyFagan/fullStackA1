@@ -16,11 +16,11 @@ export const monumentController = {
 
   addMonument: {
     validate: {
-      payload: MonumentSpec,
+      // payload: MonumentSpec,
       options: { abortEarly: false },
       failAction: async function (request, h, error) {
-        const currentPlace = await db.placeStore.getPlaceById(request.params.id)
-        return h.view("monument-view", { title: "Add Monument error", place: currentPlace, errors: error.details }).takeover().code(400);
+        const place = await db.placeStore.getPlaceById(request.params.id)
+        return h.view("monument-view", { title: "Add Monument error", place: place, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -28,10 +28,8 @@ export const monumentController = {
       const newMonument = {
         name: request.payload.name,
         description: request.payload.description,
-        location: {
-          lat: request.payload.lat,
-          lng: request.payload.lng,
-        },
+        lat: request.payload.lat,
+        lng: request.payload.lng,
         cat: request.payload.cat,
       };
       await db.monumentStore.addMonument(place._id, newMonument);

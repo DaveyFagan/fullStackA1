@@ -1,4 +1,5 @@
 import Joi from "joi";
+
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
 
 export const UserCredentialsSpec = Joi.object()
@@ -27,7 +28,28 @@ export const PlaceSpec = {
 export const MonumentSpec = {
     name: Joi.string().required(),
     description: Joi.string().required(),
-    lat: Joi.number().required(),
-    lng: Joi.number().required(),
-    cat: Joi.string().required(),
-}
+    location: {
+    lat: Joi.string().required(),
+    lng: Joi.number().required()
+    },
+    cat: Joi.number().required(),
+};
+
+/*
+export const MonumentSpec = Joi.object()
+  .keys({
+    name: Joi.string().required().example("Newgrange"),
+    Description: Joi.string().required().example("5,200 year old passage tomb located in the Boyne Valley in Ireland's Ancient East"),
+    lat: Joi.number().required().example(53),
+    lng: Joi.number().required().example(53),
+    placeid: IdSpec,
+  })
+  .label("Monument");
+
+export const MonumentSpecPlus = MonumentSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("MonumentPlus");
+
+export const MonumentArraySpec = Joi.array().items(MonumentSpecPlus).label("MonumentArray");
+*/

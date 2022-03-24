@@ -1,6 +1,9 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 
+// import { IdSpec, MonumentSpec, MonumentSpecPlus, MonumentArraySpec } from "../models/joi-schemas.js";
+// import { validationError } from "./logger.js";
+
 export const monumentApi = {
   create: {
     auth: false,
@@ -27,6 +30,12 @@ export const monumentApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    /*
+    tags: ["api"],
+    response: { schema: MonumentArraySpec, failAction: validationError },
+    description: "Get all monumentApi",
+    notes: "Returns all monumentApi",
+    */
   },
 
   findOne: {
@@ -54,7 +63,8 @@ deleteOne: {
       if (!monument) {
         return Boom.notFound("No monument with this id");
       }
-      await db.monumentStore.deleteMonument(monument._id);
+      console.log("Monument is :", monument)
+      await db.monumentStore.deleteMonumentById(monument._id);
       return h.response().code(204);
     } catch (err) {
       return Boom.serverUnavailable("No monument with this id");

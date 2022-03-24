@@ -2,8 +2,13 @@
   "places": [
     {
       "name": "Dublin",
-      "userid": "ee58746b-2104-4257-9d04-c4fd44741662",
-      "_id": "d27dec5a-ada5-4357-9493-f595befc1ad8"
+      "userid": "a9a9d8c7-90d3-4469-90b0-c241d36a4e01",
+      "_id": "1c145a21-37f7-457a-8b64-91bc58c33900"
+    },
+    {
+      "userid": "2c43ae79-7c1e-4607-a685-2ce9411e8f60",
+      "name": "Dublin",
+      "_id": "e81d651a-c06a-4a6f-b02a-a7d7eb697f35"
     }
   ]
 }
