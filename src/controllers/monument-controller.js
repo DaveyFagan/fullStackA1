@@ -1,4 +1,5 @@
 import { db } from "../models/db.js";
+import { MonumentSpec } from "../models/joi-schemas.js";
 
 export const monumentController = {
   index: {
@@ -14,6 +15,13 @@ export const monumentController = {
   },
 
   addMonument: {
+    validate: {
+      payload: MonumentSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("monument-view", { title: "Add Monument error", errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const place = await db.placeStore.getPlaceById(request.params.id);
       const newMonument = {
