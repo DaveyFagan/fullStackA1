@@ -27,7 +27,7 @@ export const monumentMongoStore = {
     return null;
   },
 
-  async deleteMonument(id) {
+  async deleteMonumentById(id) {
     try {
       await Monument.deleteOne({ _id: id });
     } catch (error) {

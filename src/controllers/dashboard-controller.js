@@ -19,8 +19,10 @@ export const dashboardController = {
     validate: {
       payload: PlaceSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("dashboard-view", { title: "Add Place error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const loggedInUser = request.auth.credentials;
+        const currentUser = await db.placeStore.getUserPlaces(loggedInUser._id)
+        return h.view("dashboard-view", { title: "Add Place error", places: currentUser, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {

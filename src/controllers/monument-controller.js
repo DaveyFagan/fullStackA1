@@ -18,8 +18,9 @@ export const monumentController = {
     validate: {
       payload: MonumentSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("monument-view", { title: "Add Monument error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const currentPlace = await db.placeStore.getPlaceById(request.params.id)
+        return h.view("monument-view", { title: "Add Monument error", place: currentPlace, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
