@@ -1,6 +1,6 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
-import { UserArray, UserSpec, IdSpec } from "../models/joi-schemas.js";
+import { UserArray, UserSpec, UserSpecPlus, IdSpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 
 export const userApi = {
@@ -21,7 +21,7 @@ export const userApi = {
     description: "Create a User",
     notes: "Returns the newly created user",
     validate: { payload: UserSpec, failAction: validationError },
-    response: { schema: UserSpec, failAction: validationError },
+    response: { schema: UserSpecPlus, failAction: validationError },
   },
 
   find: {
@@ -89,5 +89,5 @@ export const userApi = {
             return Boom.serverUnavailable("No Monument with this id")
         }
     }
-},
+  },
 };
