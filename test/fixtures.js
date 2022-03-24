@@ -56,18 +56,21 @@ export const testMonuments = [
         name: "Newbridge",
         description: "Buriel Chamber",
         lat: "34",
-        lng: "56"
+        lng: "56",
+        cat: "Stone Circle"
     },
     {
         name: "Carrowmore",
         description: "Cemetary",
         lat: "66",
-        lng: "89"
+        lng: "89",
+        cat: "Stone Circle"
     },
     {
         name: "Knowth",
         description: "Passage tomb",
         lat: "99",
-        lng: "55"
+        lng: "55",
+        cat: "Stone Circle"
     }
 ]

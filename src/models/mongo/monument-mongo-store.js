@@ -1,17 +1,18 @@
 import { Monument } from "./monument.js";
+import { Place } from "./place.js";
 
 export const monumentMongoStore = {
   async getAllMonuments() {
-        const monuments = await Monument.find().lean();
-        return monuments;
-      },
+    const monuments = await Monument.find().lean();
+    return monuments;
+  },
 
-  async addMonument(placeId, monument) {
-        monument.placeId = placeId;
-        const newMonument = new Monument(monument);
-        const monumentObj = await newMonument.save();
-        return this.getMonumentById(monumentObj._id);
-      },
+  async addMonument(placeid, monument) {
+    monument.placeid = placeid;
+    const newMonument = new Monument(monument);
+    const monumentobj = await newMonument.save();
+    return this.getMonumentById(monumentobj._id);
+  },
 
   async getMonumentsByPlaceId(id) {
     const monuments = await Monument.find({ placeid: id }).lean();
@@ -21,13 +22,12 @@ export const monumentMongoStore = {
   async getMonumentById(id) {
     if (id) {
       const monument = await Monument.findOne({ _id: id }).lean();
-      console.log(`Monument is: ${  monument}`);
       return monument;
     }
     return null;
   },
 
-  async deleteMonumentById(id) {
+  async deleteMonument(id) {
     try {
       await Monument.deleteOne({ _id: id });
     } catch (error) {
@@ -42,8 +42,7 @@ export const monumentMongoStore = {
   async updateMonument(monument, updatedMonument) {
     monument.name = updatedMonument.name;
     monument.description = updatedMonument.description;
-    monument.lng = updatedMonument.lng;
-    monument.lng = updatedMonument.lng;
+    monument.lat = updatedMonument.lat;
     await Monument.save();
   },
 };

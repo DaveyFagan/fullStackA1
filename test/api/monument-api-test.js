@@ -57,6 +57,7 @@ suite("Monument API tests", () => {
         // eslint-disable-next-line no-await-in-loop
         await placetimeService.createMonument(dublinMonuments._id, testMonuments[i]);
       }
+      console.log("dublin Monumanets is :", dublinMonuments)
       const returnedPlace = await placetimeService.getPlace(dublinMonuments._id);
       assert.equal(returnedPlace.monuments.length, testMonuments.length);
       for (let i = 0; i < testMonuments.length; i += 1) {

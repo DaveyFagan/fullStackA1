@@ -7,9 +7,10 @@ const monumentSchema = new Schema({
   description: String,
   lat: Number,
   lng: Number,
+  cat: String,
   placeid: {
     type: Schema.Types.ObjectId,
-    ref: "place",
+    ref: "Place",
   },
 });
 

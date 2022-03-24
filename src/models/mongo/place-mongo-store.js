@@ -1,5 +1,4 @@
 import { Place } from "./place.js";
-// eslint-disable-next-line import/no-unresolved
 import { monumentMongoStore } from "./monument-mongo-store.js";
 
 export const placeMongoStore = {
