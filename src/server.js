@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
 import Inert from "@hapi/inert";
+import HapiSwagger from "hapi-swagger";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
@@ -16,6 +17,13 @@ if (result.error) {
   console.log(result.error.message);
   process.exit(1);
 }
+
+const swaggerOptions = {
+  info: {
+    title: "Megalithic API",
+    version: "0.1",
+  },
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +36,14 @@ async function init() {
   await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
   server.auth.strategy("session", "cookie", {
     cookie: {
       name: process.env.COOKIE_NAME,
