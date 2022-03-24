@@ -5,42 +5,24 @@
       "description": "Buriel Chamber",
       "lat": "34",
       "lng": "56",
-      "_id": "8fcc29d7-4472-4f57-b15a-0a2829c4286d",
-      "placeid": "05916e9a-adaa-4357-a9f6-25cd7ce20a52"
+      "_id": "8686bc52-1af4-4d53-8e29-63ae6c889d53",
+      "placeid": "5ea91612-1ede-44d2-81f2-6a999f2c97a1"
     },
     {
       "name": "Carrowmore",
       "description": "Cemetary",
       "lat": "66",
       "lng": "89",
-      "_id": "cc6d72f9-89c2-4dfb-a6d0-7b9afa183537",
-      "placeid": "05916e9a-adaa-4357-a9f6-25cd7ce20a52"
+      "_id": "92d8bb1b-fc5e-4954-86cf-b4b7cdcedf6d",
+      "placeid": "5ea91612-1ede-44d2-81f2-6a999f2c97a1"
     },
     {
       "name": "Knowth",
       "description": "Passage tomb",
       "lat": "99",
       "lng": "55",
-      "_id": "2a5b0616-2821-494c-8390-bc1c1d466066",
-      "placeid": "05916e9a-adaa-4357-a9f6-25cd7ce20a52"
-    },
-    {
-      "name": "stone henge",
-      "description": "largest in europe",
-      "lat": "34",
-      "lng": "34",
-      "cat": "Stone Circle",
-      "_id": "c904895c-085e-4622-a7b1-375871b8e7ef",
-      "placeid": "abd5e9af-24f9-454f-99bd-a5be4d79cade"
-    },
-    {
-      "name": "newgrange",
-      "description": "older than the pyramids",
-      "lat": "34",
-      "lng": "34",
-      "cat": "Passage Tomb",
-      "_id": "503bc1c4-a613-444c-9376-93c3de9367f9",
-      "placeid": "abd5e9af-24f9-454f-99bd-a5be4d79cade"
+      "_id": "43c144bd-c35a-436c-9b8c-b60176d2ece5",
+      "placeid": "5ea91612-1ede-44d2-81f2-6a999f2c97a1"
     }
   ]
 }
