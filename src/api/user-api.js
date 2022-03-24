@@ -1,5 +1,6 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { UserArray } from "../models/joi-schemas.js";
 
 export const userApi = {
   create: {
@@ -30,6 +31,7 @@ export const userApi = {
     tags: ["api"],
     description: "Get all userApi",
     notes: "Returns details of all userApi",
+    response: { schema: UserArray }
   },
 
   findOne: {
