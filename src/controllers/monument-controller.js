@@ -23,7 +23,8 @@ export const monumentController = {
         name: request.payload.name,
         description: request.payload.description,
         lat: request.payload.lat,
-        lng: request.payload.lng
+        lng: request.payload.lng,
+        cat: request.payload.cat,
       };
       await db.monumentStore.addMonument(place._id, newMonument);
       return h.redirect(`/place/${place._id}`);

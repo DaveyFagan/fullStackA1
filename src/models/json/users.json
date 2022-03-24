@@ -1,25 +1,11 @@
 {
   "users": [
     {
-      "firstName": "Admin",
-      "lastName": "User",
-      "email": "admin@mail.com",
-      "password": "secret",
-      "_id": "cb1a66d1-c000-416b-8c1c-1962887ee7a7"
-    },
-    {
-      "firstName": "David",
-      "lastName": "Fagan",
+      "firstName": "",
+      "lastName": "",
       "email": "dave@mail.com",
       "password": "secret",
-      "_id": "f1eafabd-487c-4b77-9985-b0f7b3db0276"
-    },
-    {
-      "firstName": "Niall",
-      "lastName": "Fagan",
-      "email": "niall@mail.com",
-      "password": "secret",
-      "_id": "f612f2eb-ec55-488a-bd65-0642e99cfcb5"
+      "_id": "24efc71d-25d7-41c1-a6c5-de3a2760a38b"
     }
   ]
 }

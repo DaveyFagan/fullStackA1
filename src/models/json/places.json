@@ -1,3 +1,9 @@
 {
-  "places": []
+  "places": [
+    {
+      "userid": "24efc71d-25d7-41c1-a6c5-de3a2760a38b",
+      "name": "Dublin",
+      "_id": "abd5e9af-24f9-454f-99bd-a5be4d79cade"
+    }
+  ]
 }
