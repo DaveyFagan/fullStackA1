@@ -22,4 +22,6 @@ export const webRoutes = [
     { method: "POST", path: "/place/{id}/addmonument", config: monumentController.addMonument },
     { method: "GET", path: "/place/{id}/deletemonument/{monumentid}", config: monumentController.deleteMonument },
 
+    { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+
   ];

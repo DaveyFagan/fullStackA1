@@ -5,6 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
+import Inert from "@hapi/inert";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
@@ -24,6 +25,7 @@ async function init() {
     port: 3000,
     host: "localhost",
   });
+  await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
   server.auth.strategy("session", "cookie", {
