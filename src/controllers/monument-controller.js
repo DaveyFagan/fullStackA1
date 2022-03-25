@@ -28,8 +28,11 @@ export const monumentController = {
       const newMonument = {
         name: request.payload.name,
         description: request.payload.description,
-        lat: request.payload.lat,
-        lng: request.payload.lng,
+        location:
+        {
+          lat: request.payload.lat,
+          lng: request.payload.lng,
+        },
         cat: request.payload.cat,
       };
       await db.monumentStore.addMonument(place._id, newMonument);

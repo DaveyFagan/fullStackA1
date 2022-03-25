@@ -50,24 +50,33 @@ export const seedData = {
         monuments : {
           name: "Newgrange",
           description: "5,200 year old passage tomb located in the Boyne Valley in Ireland's Ancient East",
-          lat: 53,
-          lng: -6,
+          location:
+          {
+            lat: 53,
+            lng: -6,
+          },
           cat: "Passage Tomb",
           placeid: "->places.meath"
         },
         monument2 : {
             name: " The Cairn of Queen Maeve ",
             description: "On the summit of Knocknarea Mountain (320 meters in height) in County Sligo, a large Cairn can be found known locally as Miosgan Meadhba (Maeves Cairn)",
+            location:
+            {
             lat: 54,
             lng: -8,
+            },
             cat: "Cairn",
             placeid: "->places.sligo"
           },
             monument3 : {
             name: "Ballincool Standing Stone",
             description: "This enormous standing stone is very impressive and can be seen quite clearly from the road",
+            location:
+            {
             lat: 51,
             lng: 14,
+            },
             cat: "Standing Stone",
             placeid: "->places.roscommon"
           },

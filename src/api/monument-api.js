@@ -1,8 +1,8 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 
-// import { IdSpec, MonumentSpec, MonumentSpecPlus, MonumentArraySpec } from "../models/joi-schemas.js";
-// import { validationError } from "./logger.js";
+import { IdSpec, MonumentSpec, MonumentSpecPlus, MonumentArraySpec } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
 
 export const monumentApi = {
   create: {
@@ -18,6 +18,11 @@ export const monumentApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a monument",
+    notes: "Returns the newly created monument",
+    validate: { payload: MonumentSpec },
+    response: { schema: MonumentSpecPlus, failAction: validationError },
   },
 
   find: {
@@ -30,12 +35,12 @@ export const monumentApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
-    /*
+    
     tags: ["api"],
     response: { schema: MonumentArraySpec, failAction: validationError },
     description: "Get all monumentApi",
     notes: "Returns all monumentApi",
-    */
+    
   },
 
   findOne: {
@@ -51,6 +56,11 @@ export const monumentApi = {
         return Boom.serverUnavailable("No Monument with this id");
       }
     },
+    tags: ["api"],
+    description: "Find a monument",
+    notes: "Returns a monument",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: MonumentSpecPlus, failAction: validationError },
   },
 
 // fix later: When random id is used, the last monument is deleted.****
@@ -70,6 +80,9 @@ deleteOne: {
       return Boom.serverUnavailable("No monument with this id");
     }
   },
+  tags: ["api"],
+    description: "Delete a monument",
+    validate: { params: { id: IdSpec }, failAction: validationError },
 },
 
   deleteAll: {
@@ -82,6 +95,8 @@ deleteOne: {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all monumentApi",
   },
   
 };

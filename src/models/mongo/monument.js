@@ -5,8 +5,11 @@ const { Schema } = Mongoose;
 const monumentSchema = new Schema({
   name: String,
   description: String,
-  lat: Number,
-  lng: Number,
+  location: 
+  {
+    lat: Number,
+    lng: Number,
+  },
   cat: String,
   placeid: {
     type: Schema.Types.ObjectId,

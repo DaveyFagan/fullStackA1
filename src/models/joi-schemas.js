@@ -24,7 +24,7 @@ export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 export const PlaceSpec = {
     name: Joi.string().required(),
 };
-
+/*
 export const MonumentSpec = {
     name: Joi.string().required(),
     description: Joi.string().required(),
@@ -34,14 +34,18 @@ export const MonumentSpec = {
     },
     cat: Joi.number().required(),
 };
+*/
 
-/*
 export const MonumentSpec = Joi.object()
   .keys({
     name: Joi.string().required().example("Newgrange"),
-    Description: Joi.string().required().example("5,200 year old passage tomb located in the Boyne Valley in Ireland's Ancient East"),
+    description: Joi.string().required().example("5,200 year old passage tomb located in the Boyne Valley in Ireland's Ancient East"),
+    location:
+    {
     lat: Joi.number().required().example(53),
     lng: Joi.number().required().example(53),
+    },
+    cat: Joi.string().required().example("Passage Tomb"),
     placeid: IdSpec,
   })
   .label("Monument");
@@ -52,4 +56,3 @@ export const MonumentSpecPlus = MonumentSpec.keys({
 }).label("MonumentPlus");
 
 export const MonumentArraySpec = Joi.array().items(MonumentSpecPlus).label("MonumentArray");
-*/
