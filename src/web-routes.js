@@ -2,6 +2,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { monumentController } from "./controllers/monument-controller.js";
 import { adminDashboardController } from "./controllers/adminDashboard-controller.js";
+import { userSettingsController } from "./controllers/user-settings-controller.js";
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },
@@ -21,6 +22,10 @@ export const webRoutes = [
     { method: "GET", path: "/place/{id}", config: monumentController.index },
     { method: "POST", path: "/place/{id}/addmonument", config: monumentController.addMonument },
     { method: "GET", path: "/place/{id}/deletemonument/{monumentid}", config: monumentController.deleteMonument },
+
+    { method: "GET", path: "/settings", config: userSettingsController.index },
+    { method: "GET", path: "/usersettings/deleteuser/{id}", config: userSettingsController.deleteUser },
+    { method: "POST", path: "/edit", config: userSettingsController.editUser },
 
     { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 

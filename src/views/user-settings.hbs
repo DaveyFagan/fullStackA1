@@ -1,0 +1,35 @@
+{{> menu active="settings"}}
+
+<section class="section">
+  <h1 class="title">Edit User Information</h1>
+  <form action="/edit" method="POST">
+    <label class="label">Name</label>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <input class="input" type="text" placeholder="{{user.firstName}}" name="firstName">
+        </div>
+        <div class="field">
+          <input class="input" type="text" placeholder="{{user.lastName}}" name="lastName">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Email</label> <input class="input" type="text" placeholder="{{user.email}}" name="email">
+    </div>
+    <div class="field">
+      <label class="label">Password</label> <input class="input" type="password" placeholder="Enter New Password" name="password">
+    </div>
+    <div class="field is-grouped">
+      <button class="button is-link">Submit</button>
+      <a href="/usersettings/deleteuser/{{user._id}}" class="button">
+    <span class="icon-text">
+      <span class="icon has-text-danger">
+        <i class="far fa-times-circle"></i>
+      </span>
+    <span>Delete Account</span>
+    </span>
+    </a>
+    </div>
+  </form>
+</section>
