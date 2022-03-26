@@ -24,8 +24,8 @@ export const webRoutes = [
     { method: "GET", path: "/place/{id}/deletemonument/{monumentid}", config: monumentController.deleteMonument },
 
     { method: "GET", path: "/settings", config: userSettingsController.index },
-    { method: "GET", path: "/usersettings/deleteuser/{id}", config: userSettingsController.deleteUser },
-    { method: "POST", path: "/edit", config: userSettingsController.editUser },
+    { method: "GET", path: "/settings/deleteuser/{id}", config: userSettingsController.deleteUser },
+    { method: "POST", path: "/settings/edituser", config: userSettingsController.editUser },
 
     { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 

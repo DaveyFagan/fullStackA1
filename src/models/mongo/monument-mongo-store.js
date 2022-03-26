@@ -1,5 +1,6 @@
 import { Monument } from "./monument.js";
 import { Place } from "./place.js";
+import { User } from "./user.js";
 
 export const monumentMongoStore = {
   async getAllMonuments() {
@@ -39,10 +40,13 @@ export const monumentMongoStore = {
     await Monument.deleteMany({});
   },
 
-  async updateMonument(monument, updatedMonument) {
+  async updateMonument(updatedMonument) {
+    const monument = await Monument.findOne({ _id: updatedMonument._id });
     monument.name = updatedMonument.name;
     monument.description = updatedMonument.description;
     monument.lat = updatedMonument.lat;
     await Monument.save();
   },
 };
+
+

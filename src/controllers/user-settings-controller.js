@@ -16,8 +16,8 @@ export const userSettingsController = {
 
   editUser: {
     handler: async function (request, h) {
-      const loggedInUser = request.auth.credentials;
-      console.log("print getuser", loggedInUser);
+      const user = request.auth.credentials;
+      console.log("print getuser", user);
       const newUser = {
         firstName: request.payload.firstName,
         lastName: request.payload.lastName,
@@ -25,7 +25,7 @@ export const userSettingsController = {
         password: request.payload.password,
       };
       console.log("New user is: ", newUser);
-      await db.userStore.updateUser(loggedInUser, newUser);
+      await db.userStore.updateUser(user, newUser);
       return h.redirect("/");
     },
   },
