@@ -1,3 +1,4 @@
+// import dotenv from "dotenv";
 import { db } from "../models/db.js";
 import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
 
@@ -49,7 +50,7 @@ export const accountsController = {
       console.log(`Email and password: ${  email  }${password}`)
       const user = await db.userStore.getUserByEmail(email);
       console.log("Print user: ", user);
-      if (email === "admin@mail.com") {
+      if (email === process.env.admin_email && password === process.env.admin_password) {
         request.cookieAuth.set({ id: user._id })
         return h.redirect("/adminDashboard")
       }

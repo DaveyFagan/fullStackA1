@@ -1,6 +1,4 @@
 import axios from "axios";
-
-// eslint-disable-next-line import/named
 import { serviceUrl } from "../fixtures.js";
 
 export const placetimeService = {

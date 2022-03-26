@@ -1,3 +1,11 @@
+import dotenv from "dotenv";
+
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
+
 export const seedData = {
     users: {
       _model: "User",
@@ -22,8 +30,8 @@ export const seedData = {
       admin: {
         firstName: "Special",
         lastName: "User",
-        email: "admin@mail.com",
-        password: "secret"
+        email: process.env.admin_email,
+        password: process.env.admin_password
       }
     },
 

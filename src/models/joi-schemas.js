@@ -20,11 +20,11 @@ export const UserSpecPlus = UserSpec.keys({
 }).label("UserDetailsPlus");
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
-
+/*
 export const PlaceSpec = {
     name: Joi.string().required(),
 };
-/*
+
 export const MonumentSpec = {
     name: Joi.string().required(),
     description: Joi.string().required(),
@@ -56,3 +56,18 @@ export const MonumentSpecPlus = MonumentSpec.keys({
 }).label("MonumentPlus");
 
 export const MonumentArraySpec = Joi.array().items(MonumentSpecPlus).label("MonumentArray");
+
+export const PlaceSpec = Joi.object()
+  .keys({
+    name: Joi.string().required().example("Dublin"),
+    userid: IdSpec,
+    monuments: MonumentArraySpec,
+  })
+  .label("Place");
+
+export const PlaceSpecPlus = PlaceSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("PlacePlus");
+
+export const PlaceArraySpec = Joi.array().items(PlaceSpecPlus).label("PlaceArray");

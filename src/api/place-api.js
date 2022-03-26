@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { IdSpec, PlaceArraySpec, PlaceSpec, PlaceSpecPlus } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
 
 export const placeApi = {
     // user id not added
@@ -17,6 +19,11 @@ export const placeApi = {
           return Boom.serverUnavailable("Database Error");
         }
       },
+      tags: ["api"],
+      description: "Create a Place",
+      notes: "Returns the newly created Place",
+      validate: { payload: PlaceSpec, failAction: validationError },
+      response: { schema: PlaceSpecPlus, failAction: validationError },
     },
 
   find: {
@@ -29,6 +36,10 @@ export const placeApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    response: { schema: PlaceArraySpec, failAction: validationError },
+    description: "Get all places",
+    notes: "Returns all places",
   },
 
   findOne: {
@@ -44,6 +55,11 @@ export const placeApi = {
         return Boom.serverUnavailable("No Place with this id");
       }
     },
+    tags: ["api"],
+    description: "Find a Place",
+    notes: "Returns a Place",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: PlaceSpecPlus, failAction: validationError },
   },
 
 // fix later: When random id is used, the last monument is deleted.****
@@ -62,6 +78,9 @@ deleteOne: {
       return Boom.serverUnavailable("No Place with this id");
     }
   },
+    tags: ["api"],
+    description: "Delete a place",
+    validate: { params: { id: IdSpec }, failAction: validationError },
 },
 
   deleteAll: {
@@ -74,6 +93,8 @@ deleteOne: {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all PlaylistApi",
   },
   
 };
