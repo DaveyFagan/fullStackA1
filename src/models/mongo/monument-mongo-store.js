@@ -42,7 +42,6 @@ export const monumentMongoStore = {
 
   async updateMonument(updatedMonument) {
     const monument = await Monument.findOne({ _id: updatedMonument._id });
-    console.log("Current monument = ", monument);
     monument.name = updatedMonument.name;
     monument.description = updatedMonument.description;
     monument.location.lat = updatedMonument.location.lat;

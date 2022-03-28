@@ -52,6 +52,7 @@ export const monumentController = {
   updateMonument: {
     handler: async function (request, h) {
       const place = await db.placeStore.getPlaceById(request.params.id);
+      const monument = await db.monumentStore.getMonumentById(request.params.monumentid);
       const newMonument = {
         name: request.payload.name,
         description: request.payload.description,
@@ -63,7 +64,7 @@ export const monumentController = {
         cat: request.payload.cat,
       };
       console.log("New Monument : ", newMonument)
-      await db.monumentStore.updateMonument(newMonument);
+      await db.monumentStore.updateMonument(newMonument, monument);
       return h.redirect(`/place/${place._id}`);
     },
   },
