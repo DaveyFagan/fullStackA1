@@ -33,6 +33,7 @@ export const webRoutes = [
     { method: "POST", path: "/settings/edituser", config: userSettingsController.editUser },
 
     { method: "POST", path: "/place/{id}/uploadimage", config: monumentController.uploadImage },
+    { method: "DELETE", path: "/place/{id}/deleteimage", config: monumentController.deleteImage },
 
     { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 

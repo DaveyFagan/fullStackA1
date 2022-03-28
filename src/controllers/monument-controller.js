@@ -64,7 +64,7 @@ export const monumentController = {
       };
       console.log("New Monument : ", newMonument)
       await db.monumentStore.updateMonument(newMonument);
-      return h.redirect("/");
+      return h.redirect(`/place/${place._id}`);
     },
   },
 
@@ -87,6 +87,7 @@ export const monumentController = {
     handler: async function(request, h) {
       try {
         const place = await db.placeStore.getPlaceById(request.params.id);
+        console.log(request.params)
         const file = request.payload.imagefile;
         if (Object.keys(file).length > 0) {
           const url = await imageStore.uploadImage(request.payload.imagefile);
@@ -105,5 +106,16 @@ export const monumentController = {
       maxBytes: 209715200,
       parse: true
     }
-  }
+  },
+
+  deleteImage: {
+    handler: async function(request, h) {
+        const place = await db.placeStore.getPlaceById(request.params.id);
+        // const image = place.img;
+        // console.log("Image:", image)
+        // await imageStore.deleteImage(image);
+
+        return h.redirect(`/place/${place._id}`);
+    }
+  }, 
 };
