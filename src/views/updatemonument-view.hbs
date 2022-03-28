@@ -1,0 +1,81 @@
+{{> menu}}
+<form action="/place/{{../place._id}}/editmonument/{{_id}}" method="POST">
+<section class="section">
+  <div class="title">
+    Update Monument
+  </div>
+</section>
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>
+          {{monument.name}}
+        </td>
+        <td>
+          {{monument.description}}
+        </td>
+        <td>
+          {{monument.location.lat}}
+        </td>
+        <td>
+          {{monument.location.lng}}
+        </td>
+        <td>
+          {{monument.cat}}
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <div class="field">
+            <label class="label"></label> <input class="input" type="text"  name="name">
+          </div>
+        </td>
+        <td>
+            <div class="field">
+                <label class="label"></label> <input class="input" type="text"  name="description">
+            </div>
+        </td>
+        <td>
+            <div class="field">
+                <label class="label"></label> <input class="input" type="text"  name="lat"> 
+            </div>
+        </td>
+        <td>
+            <div class="field">
+                <label class="label"></label> <input class="input" type="text"  name="lng">
+            </div>
+        <td>
+          <div>
+            <select class="select select-bordered" name="cat">
+                <option>Stone Circle</option>
+                <option>Court Tomb</option>
+                <option>Passage Tomb</option>
+                <option>Wedge Tomb</option>
+                <option>Stone Row</option>
+                <option>Portal Tomb</option>
+                <option>Cairn</option>
+                <option>Standing Stone</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <button class="button is-link">Update</button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+</table>
+</form>

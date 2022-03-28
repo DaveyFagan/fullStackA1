@@ -42,10 +42,13 @@ export const monumentMongoStore = {
 
   async updateMonument(updatedMonument) {
     const monument = await Monument.findOne({ _id: updatedMonument._id });
+    console.log("Current monument = ", monument);
     monument.name = updatedMonument.name;
     monument.description = updatedMonument.description;
-    monument.lat = updatedMonument.lat;
-    await Monument.save();
+    monument.location.lat = updatedMonument.location.lat;
+    monument.location.lng = updatedMonument.location.lng;
+    monument.cat = updatedMonument.cat;
+    await monument.save();
   },
 };
 

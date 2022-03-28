@@ -22,10 +22,17 @@ export const webRoutes = [
     { method: "GET", path: "/place/{id}", config: monumentController.index },
     { method: "POST", path: "/place/{id}/addmonument", config: monumentController.addMonument },
     { method: "GET", path: "/place/{id}/deletemonument/{monumentid}", config: monumentController.deleteMonument },
+    { method: "POST", path: "/place/{id}/editmonument/{monumentid}", config: monumentController.updateMonument },
+    { method: "GET", path: "/place/{id}/updatemonument/{monumentid}", config: monumentController.updateIndex },
+
+    
+    
 
     { method: "GET", path: "/settings", config: userSettingsController.index },
     { method: "GET", path: "/settings/deleteuser/{id}", config: userSettingsController.deleteUser },
     { method: "POST", path: "/settings/edituser", config: userSettingsController.editUser },
+
+    { method: "POST", path: "/place/{id}/uploadimage", config: monumentController.uploadImage },
 
     { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 

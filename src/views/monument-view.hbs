@@ -1,9 +1,14 @@
 {{> menu}}
 
-<section class="section">
-  <div class="title">
-    {{place.name}}
+<section class="section columns is-vcentered">
+  <div class="column has-text-centered">
+    <div class="title">
+      {{place.name}}
+    </div>
+      {{> list-megalithic-monuments}}
+      {{> add-megalithic-monument}}
   </div>
-  {{> list-megalithic-monuments}}
-  {{> add-megalithic-monument}}
+  <div class="column">
+    {{> place-image }}
+  </div>
 </section>
