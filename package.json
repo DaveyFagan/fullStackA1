@@ -1,6 +1,10 @@
 {
   "name": "fullstacka1",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DaveyFagan/fullStackA1.git"
+  },  
   "description": "Assignment 1 for fullstack module",
   "main": "src/server.js",
   "type": "module",
