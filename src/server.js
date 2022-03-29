@@ -16,7 +16,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
-  // process.exit(1);
+  process.exit(1);
 }
 
 const swaggerOptions = {
@@ -68,7 +68,7 @@ async function init() {
   });
   db.init("mongo");
   server.route(webRoutes);
-  // server.route(apiRoutes);
+  server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
 }
