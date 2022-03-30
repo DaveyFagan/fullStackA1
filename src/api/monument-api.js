@@ -8,7 +8,9 @@ export const monumentApi = {
  
 
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function(request, h) {
       try {
         const monuments = await db.monumentStore.getAllMonuments();
@@ -26,7 +28,9 @@ export const monumentApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const monument = await db.monumentStore.getMonumentById(request.params.id);
@@ -49,7 +53,9 @@ export const monumentApi = {
 
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function(request, h) {
       try {
         const monument = await db.monumentStore.addMonument(request.params.id, request.payload);
@@ -74,7 +80,9 @@ export const monumentApi = {
 
 
 deleteOne: {
-  auth: false,
+  auth: {
+    strategy: "jwt",
+  },
   handler: async function (request, h) {
     try {
       const monument = await db.monumentStore.getMonumentById(request.params.id);
@@ -96,7 +104,9 @@ deleteOne: {
 },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.monumentStore.deleteAllMonuments();

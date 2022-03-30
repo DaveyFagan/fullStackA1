@@ -4,9 +4,10 @@ import { IdSpec, PlaceArraySpec, PlaceSpec, PlaceSpecPlus } from "../models/joi-
 import { validationError } from "./logger.js";
 
 export const placeApi = {
-    // user id not added
     create: {
-      auth: false,
+      auth: {
+        strategy: "jwt",
+      },
       handler: async function (request, h) {
         try {
           const place = request.payload;
@@ -27,7 +28,9 @@ export const placeApi = {
     },
 
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function(request, h) {
       try {
         const places = await db.placeStore.getAllPlaces();
@@ -43,7 +46,9 @@ export const placeApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const place = await db.placeStore.getPlaceById(request.params.id);
@@ -62,10 +67,12 @@ export const placeApi = {
     response: { schema: PlaceSpecPlus, failAction: validationError },
   },
 
-// fix later: When random id is used, the last monument is deleted.****
+
 
 deleteOne: {
-  auth: false,
+  auth: {
+    strategy: "jwt",
+  },
   handler: async function (request, h) {
     try {
       const place = await db.placeStore.getPlaceById(request.params.id);
@@ -84,7 +91,9 @@ deleteOne: {
 },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.placeStore.deleteAllPlaces();
