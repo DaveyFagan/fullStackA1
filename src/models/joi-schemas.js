@@ -41,10 +41,10 @@ export const MonumentSpec = Joi.object()
     name: Joi.string().required().example("Newgrange"),
     description: Joi.string().required().example("5,200 year old passage tomb located in the Boyne Valley in Ireland's Ancient East"),
     location:
-    {
-    lat: Joi.number().required().example(53),
-    lng: Joi.number().required().example(53),
-    },
+      {
+        lat: Joi.number().required().example(53),
+        lng: Joi.number().required().example(53),
+      },
     cat: Joi.string().required().example("Passage Tomb"),
     placeid: IdSpec,
   })

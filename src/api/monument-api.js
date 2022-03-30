@@ -5,28 +5,7 @@ import { db } from "../models/db.js";
  import { validationError } from "./logger.js";
 
 export const monumentApi = {
-  create: {
-    auth: false,
-    handler: async function(request, h) {
-      try {
-        const monument = await db.monumentStore.addMonument(request.params.id, request.payload);
-        if (monument) {
-          return h.response(monument).code(201);
-        }
-        return Boom.badImplementation("error creating monument");
-      } catch (err) {
-        return Boom.serverUnavailable("Database Error");
-      }
-    },
-    
-    tags: ["api"],
-    description: "Create a monument",
-    notes: "Returns the newly created monument",
-    /*
-    validate: { payload: MonumentSpec, failAction: validationError },
-    response: { schema: MonumentSpecPlus, failAction: validationError },
-    */
-  },
+ 
 
   find: {
     auth: false,
@@ -68,7 +47,31 @@ export const monumentApi = {
     
   },
 
-// fix later: When random id is used, the last monument is deleted.****
+
+  create: {
+    auth: false,
+    handler: async function(request, h) {
+      try {
+        const monument = await db.monumentStore.addMonument(request.params.id, request.payload);
+        if (monument) {
+          return h.response(monument).code(201);
+        }
+        return Boom.badImplementation("error creating monument");
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    
+    tags: ["api"],
+    description: "Create a monument",
+    notes: "Returns the newly created monument",
+    /*
+    validate: { payload: MonumentSpec },
+    response: { schema: MonumentSpecPlus, failAction: validationError },
+    
+    */
+  },
+
 
 deleteOne: {
   auth: false,

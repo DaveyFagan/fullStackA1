@@ -54,11 +54,13 @@ export const userApi = {
         return Boom.serverUnavailable("No User with this id");
       }
     },
+    
     tags: ["api"],
     description: "Get a specific user",
     notes: "Returns user details",
-    response: { schema: UserSpec, failAction: validationError },
     validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: UserSpecPlus, failAction: validationError }
+    
   },
 
   deleteAll: {
