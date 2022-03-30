@@ -17,6 +17,22 @@ export const userSettingsController = {
     },
   },
 
+  editAdminUser: {
+    handler: async function (request, h) {
+      const user = request.auth.credentials;
+      console.log("print getuser", user);
+      const newUser = {
+        firstName: request.payload.firstName,
+        lastName: request.payload.lastName,
+        email: user.email,
+        password: user.password,
+      };
+      console.log("New user is: ", newUser);
+      await db.userStore.updateUser(user, newUser);
+      return h.redirect("/");
+    },
+  },
+
   editUser: {
     handler: async function (request, h) {
       const user = request.auth.credentials;

@@ -15,6 +15,7 @@ export const webRoutes = [
     { method: "GET", path: "/adminDashboard", config: adminDashboardController.index },
     { method: "GET", path: "/adminDashboard/deleteuser/{id}", config: adminDashboardController.deleteUser },
     { method: "GET", path: "/adminsettings", config: userSettingsController.index },
+    { method: "POST", path: "/adminsettings/editAdminUser", config: userSettingsController.editAdminUser },
   
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addplacename", config: dashboardController.addPlace },
@@ -23,7 +24,7 @@ export const webRoutes = [
     { method: "GET", path: "/place/{id}", config: monumentController.index },
     { method: "POST", path: "/place/{id}/addmonument", config: monumentController.addMonument },
     { method: "GET", path: "/place/{id}/deletemonument/{monumentid}", config: monumentController.deleteMonument },
-    { method: "POST", path: "/place/{id}/editmonument/{monumentid}", config: monumentController.updateMonument },
+    { method: "POST", path: "/place/{id}/editmonument", config: monumentController.updateMonument },
     { method: "GET", path: "/place/{id}/updatemonument/{monumentid}", config: monumentController.updateIndex },
 
     
