@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { placetimeService } from "./placetime-service.js";
 import { assertSubset } from "../test-utils.js";
-import { maggie, dublin, testPlaces } from "../fixtures.js";
+import { maggie, maggieCredentials, dublin, testPlaces } from "../fixtures.js";
 
 suite("Place API tests", () => {
 
@@ -10,11 +10,11 @@ suite("Place API tests", () => {
   setup(async () => {
     placetimeService.clearAuth();
     user = await placetimeService.createUser(maggie);
-    await placetimeService.authenticate(maggie);
+    await placetimeService.authenticate(maggieCredentials);
     await placetimeService.deleteAllPlaces();
     await placetimeService.deleteAllUsers();
     user = await placetimeService.createUser(maggie);
-    await placetimeService.authenticate(maggie);
+    await placetimeService.authenticate(maggieCredentials);
     dublin.userid = user._id;
   });
 

@@ -74,3 +74,8 @@ export const testMonuments = [
         cat: "Stone Circle"
     }
 ]
+
+export const maggieCredentials = {
+    email: "maggie@simpson.com",
+    password: "secret"
+  };

@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { placetimeService } from "./placetime-service.js";
-import { maggie, dublin, testPlaces, testMonuments, newbridge } from "../fixtures.js";
+import { maggie, maggieCredentials, dublin, testPlaces, testMonuments, newbridge } from "../fixtures.js";
 
 suite("Monument API tests", () => {
   let user = null;
@@ -10,12 +10,12 @@ suite("Monument API tests", () => {
   setup(async () => {
     placetimeService.clearAuth();
     user = await placetimeService.createUser(maggie);
-    await placetimeService.authenticate(maggie);
+    await placetimeService.authenticate(maggieCredentials);
     await placetimeService.deleteAllPlaces();
     await placetimeService.deleteAllMonuments();
     await placetimeService.deleteAllUsers();
     user = await placetimeService.createUser(maggie);
-    await placetimeService.authenticate(maggie);
+    await placetimeService.authenticate(maggieCredentials);
     dublin.userid = user._id;
     dublinMonuments = await placetimeService.createPlace(dublin);
   });
