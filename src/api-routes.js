@@ -20,4 +20,6 @@ export const apiRoutes = [
   { method: "GET", path: "/api/places/{id}", config: placeApi.findOne},
   { method: "DELETE", path: "/api/places", config: placeApi.deleteAll},
   { method: "DELETE", path: "/api/places/{id}", config: placeApi.deleteOne},
+
+  { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
 ];
