@@ -3,6 +3,7 @@ import { db } from "../models/db.js";
 
 import { UserArray, UserSpec, UserSpecPlus, IdSpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
+import { createToken } from "./jwt-utils.js";
 
 export const userApi = {
   create: {
@@ -91,6 +92,25 @@ export const userApi = {
         }catch (err) {
             return Boom.serverUnavailable("No Monument with this id")
         }
+    }
+  },
+
+  authenticate: {
+    auth: false,
+    handler: async function(request, h) {
+      try {
+        const user = await db.userStore.getUserByEmail(request.payload.email);
+        if (!user) {
+          return Boom.unauthorized("User not found");
+        } else if (user.password !== request.payload.password) {
+          return Boom.unauthorized("Invalid password");
+        } else {
+          const token = createToken(user);
+          return h.response({ success: true, token: token }).code(201);
+        }
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
     }
   },
 };
