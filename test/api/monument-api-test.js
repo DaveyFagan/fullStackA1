@@ -8,10 +8,14 @@ suite("Monument API tests", () => {
   let dublinMonuments = null;
 
   setup(async () => {
-    await placetimeService.deleteAllPlaces();
-    await placetimeService.deleteAllUsers();
-    await placetimeService.deleteAllMonuments();
+    placetimeService.clearAuth();
     user = await placetimeService.createUser(maggie);
+    await placetimeService.authenticate(maggie);
+    await placetimeService.deleteAllPlaces();
+    await placetimeService.deleteAllMonuments();
+    await placetimeService.deleteAllUsers();
+    user = await placetimeService.createUser(maggie);
+    await placetimeService.authenticate(maggie);
     dublin.userid = user._id;
     dublinMonuments = await placetimeService.createPlace(dublin);
   });

@@ -7,9 +7,7 @@ import { createToken } from "./jwt-utils.js";
 
 export const userApi = {
   create: {
-    auth: {
-      strategy: "jwt",
-    },
+    auth: false,
     handler: async function(request, h) {
       try {
         const user = await db.userStore.addUser(request.payload);
@@ -87,7 +85,7 @@ export const userApi = {
     notes: "All userApi removed from megalithic",
   },
 
-  
+  // fix later: random id deletes last value
   
   deleteOne: {
     auth: {
@@ -106,9 +104,7 @@ export const userApi = {
   },
 
   authenticate: {
-    auth: {
-      strategy: "jwt",
-    },
+    auth: false,
     handler: async function(request, h) {
       try {
         const user = await db.userStore.getUserByEmail(request.payload.email);

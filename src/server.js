@@ -15,47 +15,64 @@ import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
-  // process.exit(1);
+  process.exit(1);
 }
 
 const swaggerOptions = {
   info: {
     title: "Megalithic API",
-    version: "0.1",
-  },
+    version: "0.1"
+  }
 };
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 async function init() {
   const server = Hapi.server({
-    port: process.env.PORT || 3000,
+    port: 3000,
+    host: "localhost"
   });
-  await server.register(jwt);
+
   await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
-  server.validator(Joi);
+  await server.register(jwt);
+
   await server.register([
     Inert,
     Vision,
     {
       plugin: HapiSwagger,
-      options: swaggerOptions,
-    },
+      options: swaggerOptions
+    }
   ]);
+
+  server.validator(Joi);
+
+  server.views({
+    engines: {
+      hbs: Handlebars
+    },
+    relativeTo: __dirname,
+    path: "./views",
+    layoutPath: "./views/layouts",
+    partialsPath: "./views/partials",
+    layout: true,
+    isCached: false
+  });
+
   server.auth.strategy("session", "cookie", {
     cookie: {
       name: process.env.cookie_name,
       password: process.env.cookie_password,
-      isSecure: false,
+      isSecure: false
     },
     redirectTo: "/",
-    validateFunc: accountsController.validate,
+    validateFunc: accountsController.validate
   });
   server.auth.strategy("jwt", "jwt", {
     key: process.env.cookie_password,
@@ -63,17 +80,7 @@ async function init() {
     verifyOptions: { algorithms: ["HS256"] }
   });
   server.auth.default("session");
-  server.views({
-    engines: {
-      hbs: Handlebars,
-    },
-    relativeTo: __dirname,
-    path: "./views",
-    layoutPath: "./views/layouts",
-    partialsPath: "./views/partials",
-    layout: true,
-    isCached: false,
-  });
+
   db.init("mongo");
   server.route(webRoutes);
   server.route(apiRoutes);
