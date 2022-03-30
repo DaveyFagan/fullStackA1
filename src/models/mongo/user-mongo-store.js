@@ -34,6 +34,14 @@ export const userMongoStore = {
     }
   },
 
+  async deleteUserByEmail(email) {
+    try {
+      await User.deleteOne({ email: email });
+    } catch (error) {
+      console.log("bad email");
+    }
+  },
+
   async deleteAll() {
     await User.deleteMany({});
   },

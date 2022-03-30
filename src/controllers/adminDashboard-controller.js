@@ -5,12 +5,17 @@ export const adminDashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const users = await db.userStore.getAllUsers();
+      // eslint-disable-next-line no-var
+      var removeAdmin = users.filter(data => data.email !== process.env.admin_email);
+      console.log("without admin: ", removeAdmin)
+      const noOfUsers = removeAdmin.length;
+      console.log("how many users are there?", noOfUsers)
       console.log("Print users: ", users)
       const viewData = {
         title: "Megalithic Ireland Dashboard",
         user: loggedInUser,
-        users: users,
-        
+        users: removeAdmin,
+        noOfUsers: noOfUsers
       };
       return h.view("adminDashboard-view", viewData);
     },
