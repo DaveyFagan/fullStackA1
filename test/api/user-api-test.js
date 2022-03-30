@@ -22,6 +22,8 @@ suite("User API tests", () => {
     assert.isDefined(newUser._id);
   });
 
+ 
+
   test("delete all userApi", async () => {
     let returnedUsers = await placetimeService.getAllUsers();
     assert.equal(returnedUsers.length, 3);
