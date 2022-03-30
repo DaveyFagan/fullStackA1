@@ -71,3 +71,10 @@ export const PlaceSpecPlus = PlaceSpec.keys({
 }).label("PlacePlus");
 
 export const PlaceArraySpec = Joi.array().items(PlaceSpecPlus).label("PlaceArray");
+
+export const JwtAuth = Joi.object()
+  .keys({
+    success: Joi.boolean().example("true").required(),
+    token: Joi.string().example("eyJhbGciOiJND.g5YmJisIjoiaGYwNTNjAOhE.gCWGmY5-YigQw0DCBo").required(),
+  })
+  .label("JwtAuth");
