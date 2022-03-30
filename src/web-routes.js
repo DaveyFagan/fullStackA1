@@ -14,6 +14,7 @@ export const webRoutes = [
 
     { method: "GET", path: "/adminDashboard", config: adminDashboardController.index },
     { method: "GET", path: "/adminDashboard/deleteuser/{id}", config: adminDashboardController.deleteUser },
+    { method: "GET", path: "/adminsettings", config: userSettingsController.index },
   
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addplacename", config: dashboardController.addPlace },

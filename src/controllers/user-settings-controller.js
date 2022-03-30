@@ -5,11 +5,14 @@ export const userSettingsController = {
     handler: async function (request, h) {
        const loggedInUser = request.auth.credentials;
      // const users = await db.userStore.getAllUsers();
-   //   console.log("Print users: ", users)
+     // console.log("Print users: ", users)
       const viewData = {
         title: "Megalithic Ireland Dashboard",
         user: loggedInUser
       };
+      if (loggedInUser.email === process.env.admin_email){
+        return h.view("admin-settings", viewData)
+      }
       return h.view("user-settings", viewData);
     },
   },
