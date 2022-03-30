@@ -8,6 +8,8 @@ import dotenv from "dotenv";
 import Inert from "@hapi/inert";
 import HapiSwagger from "hapi-swagger";
 import Joi from "joi";
+import jwt from "hapi-auth-jwt2";
+import { validate } from "./api/jwt-utils.js";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
@@ -33,6 +35,7 @@ async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
   });
+  await server.register(jwt);
   await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
