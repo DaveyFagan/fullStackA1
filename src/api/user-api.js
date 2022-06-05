@@ -138,4 +138,21 @@ export const userApi = {
     validate: { payload: UserCredentialsSpec, failAction: validationError },
     response: { schema: JwtAuth, failAction: validationError }
   },
+
+  loginOauth: {
+    auth: "github-oauth",
+    handler: async function (request, h) {
+      if (request.auth.isAuthenticated) {
+        request.cookieAuth.set(request.auth.credentials.profile.displayName.split(","));
+        const user = {
+          firstName: rawName[0],
+          lastName: rawName[1],
+          email: request.auth.credentials.profile.email
+        };
+        await db.userStore.addUser(user);
+        return h.redirect("/dashboard");
+      }
+      return h.direct("/")
+    }
+  }
 };
