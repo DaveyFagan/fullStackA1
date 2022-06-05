@@ -27,6 +27,10 @@ export const dashboardController = {
     },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      const place = request.payload.name;
+ 
+      console.log(`logged user:${  loggedInUser._id}`)
+      console.log(`Place:${  place}`)
       const newPlace = {
         userid: loggedInUser._id,
         name: request.payload.name,

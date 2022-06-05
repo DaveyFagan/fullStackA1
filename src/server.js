@@ -41,7 +41,8 @@ const swaggerOptions = {
 
 async function init() {
   const server = Hapi.server({
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 4000,
+    routes: { cors: true },
   });
 
   await server.register(Inert);
@@ -81,6 +82,7 @@ async function init() {
     redirectTo: "/",
     validateFunc: accountsController.validate
   });
+  
   server.auth.strategy("jwt", "jwt", {
     key: process.env.cookie_password,
     validate: validate,

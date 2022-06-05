@@ -21,6 +21,7 @@ suite("Monument Model tests", () => {
 
   test("create a single Monument", async () => {
     const dublinList = await db.placeStore.addPlace(dublin)
+    console.log("DublinList is: ", dublinList);
     const monument = await db.monumentStore.addMonument(dublinList._id, newbridge);
     assert.isNotNull(monument._id);
     assertSubset (newbridge, monument);

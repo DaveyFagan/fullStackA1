@@ -18,10 +18,11 @@ export const placeMongoStore = {
     return null;
   },
 
-  async addPlace(place) {
-    const newPlace = new Place(place);
+  async addPlace(place) {                                         // added user
+    const newPlace = new Place(place);                  
     const placeObj = await newPlace.save();
-    return this.getPlaceById(placeObj._id);
+    const u = await this.getPlaceById(placeObj._id);
+    return u;
   },
 
   async getUserPlaces(id) {

@@ -26,7 +26,7 @@ export const webRoutes = [
     { method: "GET", path: "/place/{id}/deletemonument/{monumentid}", config: monumentController.deleteMonument },
     { method: "POST", path: "/place/{id}/editmonument", config: monumentController.updateMonument },
     { method: "GET", path: "/place/{id}/updatemonument/{monumentid}", config: monumentController.updateIndex },
-
+    { method: "POST", path: "/place/{id}/uploadimage/{monumentid}", config: monumentController.uploadMonumentImage },
     
     
 

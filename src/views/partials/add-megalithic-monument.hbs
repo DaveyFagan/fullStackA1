@@ -1,29 +1,29 @@
 <form action="/place/{{place._id}}/addmonument" method="POST">
-  <div class="field">
-    <label class="label">Name of Megalithic Monument</label> <input class="input" type="text" placeholder="Megalithic Monument" name="name">
+   <label>Enter Monument Details:</label>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Name Of Monument" name="name">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Description" name="description">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Latitude" name="lat">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter longitude" name="lng">
+      </div>
+      <div class="field">
+       <div class="select">
+        <select name="category">
+          {{#each categories }}
+            <option> {{typeMonument}}</option>
+          {{/each}}
+        </select>
+       </div>
+      </div>
+    </div>
   </div>
-    <div class="field">
-    <label class="label">Description</label> <input class="input" type="text" placeholder="Description" name="description">
-  </div>
-  <div class="field">
-    <label class="label">Location</label> <input class="input" type="text" placeholder="Latitude" name="lat"> <input class="input" type="text" placeholder="longitude" name="lng">
-  </div>
-  <div class="field">
-    <label class="label">Category</label>
-  </div>
-  <div>
-    <select class="select select-bordered" name="cat">
-      <option>Stone Circle</option>
-      <option>Court Tomb</option>
-      <option>Passage Tomb</option>
-      <option>Wedge Tomb</option>
-      <option>Stone Row</option>
-      <option>Portal Tomb</option>
-      <option>Cairn</option>
-      <option>Standing Stone</option>
-    </select>
-  </div>
-  <button class="button is-link">Add Megalithic Monument</button>
-  </div> 
-  </div>
+  <button class="button is-primary">Add Monument</button>
 </form>

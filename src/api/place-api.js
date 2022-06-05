@@ -43,7 +43,39 @@ export const placeApi = {
     validate: { params: { id: IdSpec }, failAction: validationError },
     response: { schema: PlaceSpecPlus, failAction: validationError },
   },
-
+/*
+  create: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        // const place = request.payload;
+        console.log(`Print place api:${  place}`)
+        const user = request.auth.credentials;
+        /*
+        const newP = {
+          name: request.payload.name,
+         // userid: user._id,
+        }
+        
+       
+        const newplace = await db.placeStore.addPlace(request.payload);
+        if (newplace) {
+          return h.response(newplace).code(201);
+        }
+        return Boom.badImplementation("error creating place");
+      } catch (err) {
+        return Boom.serverUnavailable("Database ErrorDF");
+      }
+    },
+    tags: ["api"],
+    description: "Create a place",
+    notes: "Returns the newly created place",
+    validate: { payload: PlaceSpec, failAction: validationError },
+    response: { schema: PlaceSpecPlus, failAction: validationError },
+  },
+  */
   create: {
     auth: {
       strategy: "jwt",
@@ -66,6 +98,7 @@ export const placeApi = {
     validate: { payload: PlaceSpec, failAction: validationError },
     response: { schema: PlaceSpecPlus, failAction: validationError },
   },
+  
 
   deleteOne: {
     auth: {

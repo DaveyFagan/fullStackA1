@@ -1,18 +1,23 @@
 import Boom from "@hapi/boom";
+import bcrypt from "bcrypt";
 import { db } from "../models/db.js";
-
 import { UserCredentialsSpec, UserArray, UserSpec, UserSpecPlus, IdSpec, JwtAuth  } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 import { createToken } from "./jwt-utils.js";
+
+const saltRounds = 10;
 
 export const userApi = {
   create: {
     auth: false,
     handler: async function(request, h) {
       try {
-        const user = await db.userStore.addUser(request.payload);
-        if (user) {
-          return h.response(user).code(201);
+        const user = request.payload;
+        
+        user.password = await bcrypt.hash(user.password,saltRounds);
+        const saltedUser = await db.userStore.addUser(user);
+        if (saltedUser) {
+          return h.response(saltedUser).code(201);
         }
         return Boom.badImplementation("error creating user");
       } catch (err) {
@@ -107,15 +112,22 @@ export const userApi = {
     auth: false,
     handler: async function(request, h) {
       try {
-        const user = await db.userStore.getUserByEmail(request.payload.email);
+        const { email, password } = request.payload;
+        console.log("The request email is: ", email)
+        console.log("The request password is: ", password)
+
+        const user = await db.userStore.getUserByEmail(email);
+        console.log("The user is : ", user);
+        const passwordsMatch = await bcrypt.compare(password, user.password);
+        console.log("The passwords match; ", passwordsMatch);
         if (!user) {
           return Boom.unauthorized("User not found");
-        } else if (user.password !== request.payload.password) {
+        } if (!passwordsMatch) {
           return Boom.unauthorized("Invalid password");
-        } else {
+        } 
           const token = createToken(user);
           return h.response({ success: true, token: token }).code(201);
-        }
+        
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }

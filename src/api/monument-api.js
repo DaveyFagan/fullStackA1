@@ -1,7 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 
- import { IdSpec, MonumentSpec, MonumentSpecPlus, MonumentArraySpec } from "../models/joi-schemas.js";
+ import { IdSpec, MonumentSpec, MonumentSpecPlus, MonumentArraySpec, MonumentImage } from "../models/joi-schemas.js";
  import { validationError } from "./logger.js";
 
 export const monumentApi = {
@@ -58,9 +58,14 @@ export const monumentApi = {
     },
     handler: async function(request, h) {
       try {
-        const monument = await db.monumentStore.addMonument(request.params.id, request.payload);
-        if (monument) {
-          return h.response(monument).code(201);
+        const placeId = request.payload.id;
+        console.log("place id is: ", placeId)
+        const monument = request.payload;
+        console.log("monument is: ", monument)
+        const newMonument = await db.monumentStore.addMonument(monument.placeid, monument);
+        console.log("New Monument is : ", newMonument)
+        if (newMonument) {
+          return h.response(newMonument).code(200);
         }
         return Boom.badImplementation("error creating monument");
       } catch (err) {
@@ -71,11 +76,10 @@ export const monumentApi = {
     tags: ["api"],
     description: "Create a monument",
     notes: "Returns the newly created monument",
-    /*
     validate: { payload: MonumentSpec },
     response: { schema: MonumentSpecPlus, failAction: validationError },
     
-    */
+    
   },
 
 
@@ -120,5 +124,54 @@ deleteOne: {
     description: "Delete all monumentApi",
     
   },
+
+  createImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function(request, h) {
+      try {
+        
+        const monument = await db.monumentStore.getMonumentById(request.params.id)
+        console.log("The payload sent from client side is :",request.payload)
+        console.log("monument is: ", monument)
+        const file = request.payload.img;
+        console.log("Payload of the image file: ", file)
+        
+        if (Object.keys(file).length > 0) {
+          const url = await imageStore.uploadImage(request.payload.img);
+          console.log("The url is : ", url)
+          monument.img = url;
+          const uploadedImage = db.monumentStore.updateMonument(monument);
+          console.log("The updated monument with image file: ", uploadedImage)
+          return uploadedImage;
+          
+        } 
+
+        if (uploadImage) {
+          return h.response(uploadImage).code(200);
+        }
+        return Boom.badImplementation("error creating monument image");
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    payload: {
+      multipart: true,
+      output: "data",
+      maxBytes: 209715200,
+      parse: true
+    },
+    
+    tags: ["api"],
+    description: "Create a image",
+    notes: "Returns the newly created image",
+    /*
+    validate: { payload: MonumentImage },
+    response: { schema: MonumentSpecPlus, failAction: validationError },
+    */
+    
+  },
+
   
 };

@@ -4,25 +4,26 @@ import { User } from "./user.js";
 
 export const monumentMongoStore = {
   async getAllMonuments() {
-    const monuments = await Monument.find().lean();
+    const monuments = await Monument.find().populate("category").populate("placeid").lean();
     return monuments;
   },
 
-  async addMonument(placeid, monument) {
+  async addMonument(placeid, monument) {  
     monument.placeid = placeid;
     const newMonument = new Monument(monument);
     const monumentobj = await newMonument.save();
+  
     return this.getMonumentById(monumentobj._id);
   },
 
   async getMonumentsByPlaceId(id) {
-    const monuments = await Monument.find({ placeid: id }).lean();
+    const monuments = await Monument.find({ placeid: id }).populate("category").lean();
     return monuments;
   },
 
   async getMonumentById(id) {
     if (id) {
-      const monument = await Monument.findOne({ _id: id }).lean();
+      const monument = await Monument.findOne({ _id: id }).populate("category").lean();
       return monument;
     }
     return null;
@@ -44,9 +45,10 @@ export const monumentMongoStore = {
     const monument = await Monument.findOne({ _id: updatedMonument._id });
     monument.name = updatedMonument.name;
     monument.description = updatedMonument.description;
+    monument.img = updatedMonument.img;
     monument.location.lat = updatedMonument.location.lat;
     monument.location.lng = updatedMonument.location.lng;
-    monument.cat = updatedMonument.cat;
+    monument.category = updatedMonument.category;
     await monument.save();
   },
 };

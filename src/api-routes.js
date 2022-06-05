@@ -1,6 +1,7 @@
 import { monumentApi } from "./api/monument-api.js";
 import { placeApi } from "./api/place-api.js";
 import { userApi } from "./api/user-api.js";
+import { categoryApi } from "./api/category-api.js";
 
 export const apiRoutes = [
   { method: "POST", path: "/api/users", config: userApi.create },
@@ -14,6 +15,7 @@ export const apiRoutes = [
   { method: "GET", path: "/api/monuments/{id}", config: monumentApi.findOne},
   { method: "DELETE", path: "/api/monuments", config: monumentApi.deleteAll},
   { method: "DELETE", path: "/api/monuments/{id}", config: monumentApi.deleteOne},
+  { method: "POST", path: "/api/monuments/{id}/uploadimage", config: monumentApi.createImage },
 
   { method: "POST", path: "/api/places", config: placeApi.create },
   { method: "GET", path: "/api/places", config: placeApi.find },
@@ -22,4 +24,11 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/places/{id}", config: placeApi.deleteOne},
 
   { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
+
+  { method: "GET", path: "/api/category", config: categoryApi.find },
+  { method: "GET", path: "/api/category/{id}", config: categoryApi.findOne },
+  { method: "POST", path: "/api/category", config: categoryApi.create },
+  { method: "DELETE", path: "/api/category/{id}", config: categoryApi.deleteOne },
+  { method: "DELETE", path: "/api/category", config: categoryApi.deleteAll},
+
 ];

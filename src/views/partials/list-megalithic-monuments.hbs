@@ -8,10 +8,12 @@
       <th>Category</th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    {{#each place.monuments}}
+    {{#each monuments}}
       <tr>
         <td>
           {{name}}
@@ -26,7 +28,7 @@
           {{location.lng}}
         </td>
         <td>
-          {{cat}}
+          {{category.typeMonument}}
         </td>
         <td>
           <a href="/place/{{../place._id}}/deletemonument/{{_id}}" class="button">
@@ -41,6 +43,14 @@
          <a href="/place/{{../place._id}}/updatemonument/{{_id}}" class="button" >
             <i class="fa fa-pen"></i>
           </a>
+        </td>
+        <td>
+          {{> monument-image}}
+        </td>
+        <td>
+                <figure class="image is-25x25">
+      <img src={{img}}>
+    </figure>
         </td>
       </tr>
     {{/each}}

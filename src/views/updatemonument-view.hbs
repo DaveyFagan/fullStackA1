@@ -30,7 +30,7 @@
           {{monument.location.lng}}
         </td>
         <td>
-          {{monument.cat}}
+          {{monument.category.typeMonument}}
         </td>
       </tr>
       
@@ -55,18 +55,15 @@
                 <label class="label"></label> <input class="input" type="text"  name="lng">
             </div>
         <td>
-          <div>
-            <select class="select select-bordered" name="cat">
-                <option>Stone Circle</option>
-                <option>Court Tomb</option>
-                <option>Passage Tomb</option>
-                <option>Wedge Tomb</option>
-                <option>Stone Row</option>
-                <option>Portal Tomb</option>
-                <option>Cairn</option>
-                <option>Standing Stone</option>
+        <div class="field">
+          <div class="select">
+            <select name="category">
+              {{#each categories }}
+               <option> {{typeMonument}}</option>
+              {{/each}}
             </select>
-          </div>
+           </div>
+         </div>
         </td>
       </tr>
       <tr>

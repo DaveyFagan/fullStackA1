@@ -12,6 +12,7 @@ import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { connectMongo } from "./mongo/connect.js";
 import { placeMongoStore } from "./mongo/place-mongo-store.js";
 import { monumentMongoStore } from "./mongo/monument-mongo-store.js";
+import { categoryMongoStore } from "./mongo/category-mongo-store.js";
 
 export const db = {
   userStore: null,
@@ -30,6 +31,7 @@ export const db = {
         this.userStore = userMongoStore;
         this.placeStore = placeMongoStore;
         this.monumentStore = monumentMongoStore;
+        this.categoryStore = categoryMongoStore;
         connectMongo();
         break;
       default:  

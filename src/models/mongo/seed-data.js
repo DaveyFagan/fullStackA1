@@ -13,19 +13,19 @@ export const seedData = {
         firstName: "Homer",
         lastName: "Simpson",
         email: "homer@simpson.com",
-        password: "secret"
+        password: "$2a$10$hj0arwgT0fKlwmu8aR4ei.c6.LPO7fNEQwPvCenpzgIlNcjEWomdm"
       },
       marge: {
         firstName: "Marge",
         lastName: "Simpson",
         email: "marge@simpson.com",
-        password: "secret"
+        password: "$2a$10$hj0arwgT0fKlwmu8aR4ei.c6.LPO7fNEQwPvCenpzgIlNcjEWomdm"
       },
       bart: {
         firstName: "Bart",
         lastName: "Simpson",
         email: "bart@simpson.com",
-        password: "secret"
+        password: "$2a$10$hj0arwgT0fKlwmu8aR4ei.c6.LPO7fNEQwPvCenpzgIlNcjEWomdm"
       },
       admin: {
         firstName: "Special",
@@ -34,11 +34,14 @@ export const seedData = {
         password: process.env.admin_password
       }
     },
-
     places: {
         _model: "Place",
         meath: {
           name: "Meath",
+          userid: "->users.bart"
+        },
+        kildare: {
+          name: "kildare",
           userid: "->users.bart"
         },
         sligo: {
@@ -50,20 +53,44 @@ export const seedData = {
           userid: "->users.marge"
           },
       },
-
-
-
+    categories: {
+      _model: "Category",
+      cat1: {
+        typeMonument: "Stone Circle"
+      },
+      cat2: {
+        typeMonument: "Court Tomb"
+      },
+      cat3: {
+        typeMonument: "Passage Tomb"
+      },
+      cat4: {
+        typeMonument: "Wedge Tomb"
+      },
+      cat5: {
+        typeMonument: "Stone Row"
+      },
+      cat6: {
+        typeMonument: "Portal Tomb"
+      },
+      cat7: {
+        typeMonument: "Cairn"
+      },
+      cat8: {
+        typeMonument: "Standing Stone"
+      },
+    },
       monuments: {
         _model : "Monument",
         monuments : {
           name: "Newgrange",
-          description: "5,200 year old passage tomb located in the Boyne Valley in Ireland's Ancient East",
+          description: "5,200 year old passage tomb located in the Boyne Valley in Irelands Ancient East",
           location:
           {
-            lat: 53,
-            lng: -6,
+            lat: 53.6899522402,
+            lng: -6.47168,
           },
-          cat: "Passage Tomb",
+          category: "->categories.cat3",
           placeid: "->places.meath"
         },
         monument2 : {
@@ -71,10 +98,10 @@ export const seedData = {
             description: "On the summit of Knocknarea Mountain (320 meters in height) in County Sligo, a large Cairn can be found known locally as Miosgan Meadhba (Maeves Cairn)",
             location:
             {
-            lat: 54,
-            lng: -8,
+            lat: 54.25820555556549,
+            lng: -8.575172424316408,
             },
-            cat: "Cairn",
+            category: "->categories.cat7",
             placeid: "->places.sligo"
           },
             monument3 : {
@@ -82,11 +109,12 @@ export const seedData = {
             description: "This enormous standing stone is very impressive and can be seen quite clearly from the road",
             location:
             {
-            lat: 51,
-            lng: 14,
+            lat: 53.831202,
+            lng: -8.387562,
             },
-            cat: "Standing Stone",
+            category: "->categories.cat8",
             placeid: "->places.roscommon"
           },
-      }
+      }, 
   };
+  
