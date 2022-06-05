@@ -41,7 +41,7 @@ export const seedData = {
           userid: "->users.bart"
         },
         kildare: {
-          name: "kildare",
+          name: "Kildare",
           userid: "->users.bart"
         },
         sligo: {

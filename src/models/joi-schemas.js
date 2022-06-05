@@ -45,12 +45,12 @@ export const CategorySpec = Joi.object()
 
 export const MonumentSpec = Joi.object()
   .keys({
-    name: Joi.string().required().example("Newgrange").required.regex(/^[A-Z][a-z]{2,}$/),
-    description: Joi.string().required().example("5,200 year old passage tomb located in the Boyne Valley in Irelands Ancient East").required.regex(/^[A-Z][a-z]{2,}$/),
+    name: Joi.string().required().example("Newgrange").required(),
+    description: Joi.string().required().example("5,200 year old passage tomb located in the Boyne Valley in Irelands Ancient East"),
     location:
       {
-        lat: Joi.number().required().example(53).regex(/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/),
-        lng: Joi.number().required().example(53).regex(/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/),
+        lat: Joi.number().required().example(53),
+        lng: Joi.number().required().example(53)
       },
     category: CategorySpec,
     placeid: IdSpec,
@@ -74,7 +74,7 @@ export const MonumentArraySpec = Joi.array().items(MonumentSpecPlus).label("Monu
 
 export const PlaceSpec = Joi.object()
   .keys({
-    name: Joi.string().required().example("Dublin"),
+    name: Joi.string().required().example("Dublin").regex(/^[A-Z][a-z]{2,}$/),
     userid: IdSpec,
     monuments: MonumentArraySpec,
   })
